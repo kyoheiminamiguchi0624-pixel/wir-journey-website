@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Color tokens ----------------------------------------------------- */
+  --color-paper: #f6f3ec;
+  --color-paper-deep: #efe9dc;
+  --color-ink: #22261f;
+  --color-ink-soft: #4b5147;
+  --color-moss: #4b5d42;
+  --color-moss-deep: #333f2c;
+  --color-kyo-gold: #b8922e;
+  --color-stone: #c7c0af;
+  --color-stone-light: #e4dfd2;
+  --color-white: #ffffff;
+
+  /* Typography ---------------------------------------------------------*/
+  --font-serif-jp: var(--font-shippori-mincho);
+  --font-sans-jp: var(--font-zen-kaku);
+  --font-display-en: var(--font-eb-garamond);
+
+  /* Radius ---------------------------------------------------------------*/
+  --radius-frame: 0px;
+  --radius-control: 4px;
+  --radius-pill: 999px;
+
+  /* Container ------------------------------------------------------------*/
+  --container-content: 1280px;
+  --container-narrow: 780px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans-jp), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
+}
+
+::selection {
+  background: var(--color-moss);
+  color: var(--color-paper);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-moss);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.brush-divider {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  color: var(--color-ink);
+  opacity: 0.55;
+}
+
+.brush-divider--gold {
+  color: var(--color-kyo-gold);
+  opacity: 0.8;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.prose-editorial {
+  color: var(--color-ink-soft);
+  line-height: 1.9;
+}
+.prose-editorial h2 {
+  font-family: var(--font-serif-jp);
+  color: var(--color-ink);
+  font-size: 1.5rem;
+  margin-top: 2.5em;
+  margin-bottom: 0.8em;
+}
+.prose-editorial p {
+  margin-bottom: 1.4em;
+}
+.prose-editorial a {
+  color: var(--color-moss);
+  text-underline-offset: 3px;
+}
