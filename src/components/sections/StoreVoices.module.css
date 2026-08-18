@@ -1,0 +1,55 @@
+.list {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  padding-block: 3rem;
+  border-top: 1px solid var(--color-gray-light);
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.quote {
+  margin: 0;
+  max-width: 44rem;
+}
+
+.quote p {
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  line-height: 1.8;
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.source {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.source::before {
+  content: "—";
+  color: var(--color-gray);
+}
+
+.storeName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.person {
+  font-size: 0.85rem;
+  color: var(--color-gray);
+}
+
+.ctaRow {
+  margin-top: 3rem;
+  text-align: center;
+}

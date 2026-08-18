@@ -1,0 +1,29 @@
+.wrap {
+  border-bottom: 1px solid var(--color-gray-light);
+  padding-block: 0.85rem;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.75rem;
+  color: var(--color-gray);
+}
+
+.list a {
+  text-decoration: none;
+  color: var(--color-gray);
+}
+
+.list a:hover {
+  color: var(--color-black);
+}
+
+.sep {
+  margin-right: 0.35rem;
+}

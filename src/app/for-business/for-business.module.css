@@ -1,0 +1,54 @@
+.grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  border-top: 1px solid var(--color-gray-light);
+  padding-top: 1rem;
+}
+
+.card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.card p {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--color-charcoal);
+}
+
+.faqList {
+  margin: 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.faqItem dt {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.faqItem dd {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--color-charcoal);
+  line-height: 1.8;
+}
+
+.ctaBlock {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}

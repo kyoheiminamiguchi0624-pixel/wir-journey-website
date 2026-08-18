@@ -1,0 +1,19 @@
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  border-radius: var(--radius-control);
+}
+
+.outline {
+  border: 1px solid var(--color-black);
+  color: var(--color-black);
+  background: transparent;
+}
+
+.accent {
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  background: transparent;
+}

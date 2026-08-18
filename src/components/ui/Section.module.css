@@ -1,0 +1,15 @@
+.section {
+  padding-block: var(--space-section);
+}
+
+.white {
+  background: var(--color-white);
+}
+
+.surface {
+  background: var(--color-surface);
+}
+
+.narrow {
+  max-width: var(--container-narrow);
+}

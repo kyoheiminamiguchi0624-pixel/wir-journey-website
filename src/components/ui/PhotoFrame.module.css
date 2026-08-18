@@ -1,0 +1,33 @@
+.frame {
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-surface-deep);
+}
+
+.landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--color-gray-light);
+}
+
+.placeholderText {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-gray);
+}

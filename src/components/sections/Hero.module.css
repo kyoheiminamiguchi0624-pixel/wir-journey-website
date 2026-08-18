@@ -1,0 +1,36 @@
+.hero {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--color-gray);
+}
+
+.headline {
+  margin-top: 1rem;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.subcopy {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--color-charcoal);
+  max-width: 34rem;
+}
+
+.ctaRow {
+  margin-top: 2rem;
+}

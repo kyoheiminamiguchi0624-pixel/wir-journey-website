@@ -1,0 +1,43 @@
+.footer {
+  border-top: 1px solid var(--color-gray-light);
+  background: var(--color-white);
+  padding-block: var(--space-section-sm);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.logo {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-gray);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.nav a {
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: var(--color-charcoal);
+}
+
+.nav a:hover {
+  color: var(--color-black);
+}
+
+.copyright {
+  font-size: 0.7rem;
+  color: var(--color-gray);
+}

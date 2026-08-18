@@ -1,0 +1,33 @@
+.list {
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid var(--color-black);
+  padding-top: 1rem;
+}
+
+.step {
+  font-size: 0.8rem;
+  color: var(--color-gray);
+  letter-spacing: 0.08em;
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: 500;
+}

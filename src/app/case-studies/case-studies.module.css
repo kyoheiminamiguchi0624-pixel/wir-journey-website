@@ -1,0 +1,51 @@
+.list {
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card h3 {
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.meta {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: var(--color-gray);
+}
+
+.body {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.25rem 1rem;
+}
+
+.body dt {
+  font-size: 0.75rem;
+  color: var(--color-gray);
+  margin-top: 0.75rem;
+}
+
+.body dd {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--color-charcoal);
+  line-height: 1.7;
+}
+
+.voice {
+  margin: 1.25rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-black);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-charcoal);
+}

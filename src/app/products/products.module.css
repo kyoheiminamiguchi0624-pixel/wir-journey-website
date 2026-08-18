@@ -1,0 +1,63 @@
+.seriesBlock {
+  margin-top: 3.5rem;
+}
+
+.seriesBlock:first-of-type {
+  margin-top: 3rem;
+}
+
+.seriesLabel {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+  border-bottom: 1px solid var(--color-gray-light);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardBody {
+  margin-top: 1rem;
+}
+
+.cardHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardHeader h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.format {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--color-gray);
+}

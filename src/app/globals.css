@@ -1,35 +1,34 @@
-@import "tailwindcss";
-
-@theme inline {
-  /* Color tokens ----------------------------------------------------- */
-  --color-paper: #f6f3ec;
-  --color-paper-deep: #efe9dc;
-  --color-ink: #22261f;
-  --color-ink-soft: #4b5147;
-  --color-moss: #4b5d42;
-  --color-moss-deep: #333f2c;
-  --color-kyo-gold: #b8922e;
-  --color-stone: #c7c0af;
-  --color-stone-light: #e4dfd2;
+/*
+  Design tokens follow Draft 0.8's color rule: white ~70-80%, black/charcoal/gray
+  ~15-25%, accent <=5% drawn from actual product/ingredient colors.
+  --color-accent is a placeholder value pending official brand color confirmation.
+*/
+:root {
   --color-white: #ffffff;
+  --color-surface: #fafaf9;
+  --color-surface-deep: #f2f1ee;
+  --color-black: #131313;
+  --color-charcoal: #2b2b2b;
+  --color-gray: #6f6f6c;
+  --color-gray-light: #d9d8d3;
+  --color-border: #131313;
+  --color-accent: #c9a13a;
 
-  /* Typography ---------------------------------------------------------*/
-  --font-serif-jp: var(--font-shippori-mincho);
-  --font-sans-jp: var(--font-zen-kaku);
-  --font-display-en: var(--font-eb-garamond);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
 
-  /* Radius ---------------------------------------------------------------*/
-  --radius-frame: 0px;
-  --radius-control: 4px;
-  --radius-pill: 999px;
+  --container-width: 1200px;
+  --container-narrow: 760px;
+  --space-section: clamp(3.5rem, 7vw, 7rem);
+  --space-section-sm: clamp(2.5rem, 5vw, 4.5rem);
 
-  /* Container ------------------------------------------------------------*/
-  --container-content: 1280px;
-  --container-narrow: 780px;
+  --radius-control: 2px;
+
+  color-scheme: light;
 }
 
-:root {
-  color-scheme: light;
+* {
+  box-sizing: border-box;
 }
 
 html {
@@ -48,16 +47,43 @@ html {
 }
 
 body {
-  background: var(--color-paper);
-  color: var(--color-ink);
-  font-family: var(--font-sans-jp), system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  background: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-sans);
+  line-height: 1.7;
   letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* モバイル固定CTA(Header)の分だけ本文下部に余白を確保 */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 4.5rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
 }
 
 ::selection {
-  background: var(--color-moss);
-  color: var(--color-paper);
+  background: var(--color-black);
+  color: var(--color-white);
 }
 
 a:focus-visible,
@@ -66,57 +92,35 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--color-moss);
+  outline: 2px solid var(--color-black);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: var(--radius-control);
 }
 
-.brush-divider {
-  display: block;
-  width: 100%;
-  max-width: 220px;
-  height: auto;
-  color: var(--color-ink);
-  opacity: 0.55;
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.brush-divider--gold {
-  color: var(--color-kyo-gold);
-  opacity: 0.8;
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: 0.6rem 1.2rem;
+  transform: translateY(-150%);
+  transition: transform 0.15s ease;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.is-visible {
-  opacity: 1;
+.skip-link:focus {
   transform: translateY(0);
-}
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-.prose-editorial {
-  color: var(--color-ink-soft);
-  line-height: 1.9;
-}
-.prose-editorial h2 {
-  font-family: var(--font-serif-jp);
-  color: var(--color-ink);
-  font-size: 1.5rem;
-  margin-top: 2.5em;
-  margin-bottom: 0.8em;
-}
-.prose-editorial p {
-  margin-bottom: 1.4em;
-}
-.prose-editorial a {
-  color: var(--color-moss);
-  text-underline-offset: 3px;
 }
