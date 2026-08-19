@@ -1,36 +1,42 @@
-import { Section } from "@/components/ui/Section";
-import { SectionTitle } from "@/components/ui/SectionTitle";
-import { Button } from "@/components/ui/Button";
-import { PRIMARY_CTA } from "@/lib/constants";
+import Image from "next/image";
 import { storeVoices } from "@/lib/data/storeVoices";
 import styles from "./StoreVoices.module.css";
 
 export function StoreVoices() {
   return (
-    <Section>
-      <SectionTitle
-        eyebrow="Voice"
-        title="導入店舗様の声"
-        description="Wir Journeyを実際にご導入いただいている店舗様から、評価の声をいただいています。"
-      />
-      <div className={styles.list}>
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <p className={styles.eyebrow}>VOICES</p>
+          <h2 className={styles.heading}>導入店舗様の声</h2>
+        </div>
         {storeVoices.map((voice) => (
-          <figure key={voice.storeName} className={styles.item}>
-            <blockquote className={styles.quote}>
-              <p>{voice.comment}</p>
-            </blockquote>
-            <figcaption className={styles.source}>
-              <span className={styles.storeName}>{voice.storeName}</span>
-              <span className={styles.person}>
-                {voice.role} {voice.name}
-              </span>
-            </figcaption>
-          </figure>
+          <div
+            key={voice.storeName}
+            className={styles.item}
+            style={{ flexDirection: voice.direction }}
+          >
+            <div className={styles.imageBox}>
+              <Image
+                src={voice.image}
+                alt=""
+                fill
+                sizes="(min-width: 900px) 32vw, 100vw"
+                className={styles.image}
+              />
+            </div>
+            <div className={styles.textBox}>
+              <p className={styles.quote}>「{voice.comment}」</p>
+              <div className={styles.source}>
+                <p className={styles.storeName}>{voice.storeName}</p>
+                <p className={styles.person}>
+                  {voice.role} {voice.name}
+                </p>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
-      <div className={styles.ctaRow}>
-        <Button href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</Button>
-      </div>
-    </Section>
+    </section>
   );
 }

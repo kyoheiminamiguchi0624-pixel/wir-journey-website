@@ -1,27 +1,41 @@
-import { Section } from "@/components/ui/Section";
-import { PhotoFrame } from "@/components/ui/PhotoFrame";
-import { Button } from "@/components/ui/Button";
-import { PRIMARY_CTA, SITE } from "@/lib/constants";
+import Image from "next/image";
+import { PRIMARY_CTA } from "@/lib/constants";
 import styles from "./Hero.module.css";
 
 export function Hero() {
   return (
-    <Section>
-      <div className={styles.hero}>
-        <div>
-          <p className={styles.eyebrow}>{SITE.fullName}</p>
-          <h1 className={styles.headline}>{SITE.tagline}</h1>
+    <section className={styles.hero}>
+      <div className={styles.imageLayer}>
+        <Image
+          src="/images/home/hero-visual.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.image}
+        />
+        <div className={styles.overlay} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.inner}>
+          <h1 className={styles.headline}>
+            京都のドリンクに、
+            <br />
+            もっと選択肢を。
+          </h1>
           <p className={styles.subcopy}>
-            京都の素材とクラフトの発想から生まれた完成されたクラフトドリンクを、ホテル・レストラン・カフェ・小売店などの事業者様へ。小ロットから対応しています。
+            京都・西陣のノンアルコール専業クラフトドリンクメーカー。ホテル・レストラン・カフェ・小売店様へ、無添加・無着色のドリンクをお届けしています。
           </p>
           <div className={styles.ctaRow}>
-            <Button href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</Button>
+            <a href="#contact" className={styles.ctaPrimary}>
+              {PRIMARY_CTA.label}
+            </a>
+            <a href="#products" className={styles.ctaSecondary}>
+              商品を見る
+            </a>
           </div>
         </div>
-        <div>
-          <PhotoFrame alt={null} ratio="portrait" />
-        </div>
       </div>
-    </Section>
+    </section>
   );
 }

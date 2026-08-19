@@ -3,7 +3,7 @@ import { PainPoints } from "@/components/sections/PainPoints";
 import { WhyWirJourney } from "@/components/sections/WhyWirJourney";
 import { StoreVoices } from "@/components/sections/StoreVoices";
 import { ProductsOverview } from "@/components/sections/ProductsOverview";
-import { AdoptionFlow } from "@/components/sections/AdoptionFlow";
+import { Flow } from "@/components/sections/Flow";
 import { OurStoryExcerpt } from "@/components/sections/OurStoryExcerpt";
 import { FaqExcerpt } from "@/components/sections/FaqExcerpt";
 import { ContactCta } from "@/components/sections/ContactCta";
@@ -24,7 +24,7 @@ export default function Home() {
       <WhyWirJourney />
       <StoreVoices />
       <ProductsOverview />
-      <AdoptionFlow />
+      <Flow />
       <OurStoryExcerpt />
       <FaqExcerpt />
       <ContactCta />

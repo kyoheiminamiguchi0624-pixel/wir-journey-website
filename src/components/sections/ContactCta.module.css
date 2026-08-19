@@ -1,26 +1,73 @@
-.wrap {
+.section {
+  background: oklch(30% 0.05 45);
+  color: oklch(97% 0.012 75);
+  padding: clamp(4.5rem, 9vw, 7rem) 0;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
 }
 
-.wrap h2 {
-  font-size: 1.4rem;
-  font-weight: 700;
+.eyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: oklch(80% 0.03 65);
+  margin-bottom: 1.25rem;
 }
 
-.wrap p {
-  font-size: 0.9rem;
-  color: var(--color-charcoal);
-  max-width: 32rem;
+.heading {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.body {
+  font-size: 15px;
+  line-height: 1.9;
+  color: oklch(88% 0.02 65);
+  max-width: 440px;
+  margin: 0 auto 2.5rem;
 }
 
 .ctaRow {
-  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  padding: 1rem 2.1rem;
+  text-decoration: none;
+}
+
+.ctaPrimary {
+  background: oklch(97% 0.012 75);
+  color: oklch(30% 0.05 45);
+}
+
+.ctaPrimary:hover {
+  background: oklch(88% 0.02 65);
+}
+
+.ctaSecondary {
+  background: transparent;
+  border: 1px solid oklch(75% 0.02 65);
+  color: oklch(97% 0.012 75);
+}
+
+.ctaSecondary:hover {
+  background: oklch(97% 0.012 75);
+  color: oklch(30% 0.05 45);
 }

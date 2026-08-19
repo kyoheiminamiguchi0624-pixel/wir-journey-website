@@ -9,21 +9,32 @@ export const SITE = {
   contactEmail: "contact@wir-journey.example.com",
 };
 
-// Sitemap order follows Draft 0.8 section 8(USE CASEは正式版のIAから除外)。HOMEは"/"。
+// design4ハンドオフ(2026-08-18)のHeaderナビ構成。PRODUCTSはHOME上では
+// #productsアンカー、HOME以外では実ページ(/products)へ遷移する(各コンポーネント側で解決)。
 export const NAV_LINKS = [
-  { href: "/products", label: "PRODUCTS" },
-  { href: "/case-studies", label: "CASE STUDIES" },
-  { href: "/for-business", label: "FOR BUSINESS" },
-  { href: "/about", label: "ABOUT" },
-  { href: "/oem", label: "OEM" },
+  { href: "/products", anchorOnHome: "#products", label: "PRODUCTS" },
+  { href: "/about", label: "ABOUT US" },
   { href: "/faq", label: "FAQ" },
 ];
 
+// Footer専用のサイトマップリンク(design4ハンドオフ準拠)。
+export const FOOTER_LINKS = [
+  { href: "/products", anchorOnHome: "#products", label: "商品" },
+  { href: "/about", label: "私たちについて" },
+  { href: "/faq", label: "よくある質問" },
+  { href: "/contact", label: "お問い合わせ" },
+];
+
 // CV hierarchy。Primary CTAは「業務用のお取引について相談する」に統一。
+// HOME以外のページ・CONTACTセクション自体は実ページ(/contact)を維持。
 export const PRIMARY_CTA = { label: "業務用のお取引について相談する", href: "/contact" };
 export const SECONDARY_CTA = { label: "商品について相談する", href: "/contact" };
 export const LEAD_CTA = { label: "サンプルについて相談する", href: "/contact" };
 export const OEM_CTA = { label: "OEMについて相談する", href: "/oem" };
+
+// design4ハンドオフ(2026-08-18)で確定した一般消費者向け外部リンク(BASEショップ)。
+export const BASE_SHOP_URL = "https://wirjourney.base.shop/";
+export const BASE_SHOP_LABEL = "一般のお客様はこちら";
 
 // 「小ロットから対応」は具体的な最低発注数量を出さない基本表現(Draft 0.8方針)。
 export const SMALL_LOT_MESSAGE = "小ロットから対応";

@@ -1,35 +1,93 @@
-.grid {
-  margin-top: 2.5rem;
-  display: grid;
-  gap: 1.5rem;
+.section {
+  padding: clamp(4.5rem, 8vw, 6.5rem) 0;
 }
 
-@media (min-width: 768px) {
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+
+.header {
+  margin-bottom: 2.75rem;
+}
+
+.eyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: oklch(50% 0.05 50);
+  margin-bottom: 1rem;
+}
+
+.heading {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 3vw, 2.75rem);
+}
+
+@media (min-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1000px) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.seriesCard {
-  border-top: 1px solid var(--color-black);
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  text-align: center;
+.itemTitle {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0 0 1rem;
 }
 
-.seriesCard h3 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+.imageBox {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin-bottom: 1.25rem;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.desc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: oklch(48% 0.02 55);
+  margin: 0;
 }
 
 .more {
-  margin-top: 2.5rem;
   text-align: center;
+  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.moreLink {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--color-black);
+  color: var(--color-black);
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  padding: 0.9rem 2rem;
+  text-decoration: none;
+}
+
+.moreLink:hover {
+  background: var(--color-black);
+  color: oklch(97% 0.012 75);
 }

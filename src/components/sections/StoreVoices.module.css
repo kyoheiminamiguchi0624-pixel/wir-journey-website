@@ -1,55 +1,83 @@
-.list {
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
+.section {
+  background: oklch(94.5% 0.02 70);
+  border-top: 1px solid oklch(88% 0.014 70);
+  border-bottom: 1px solid oklch(88% 0.014 70);
+  padding: clamp(4.5rem, 8vw, 6.5rem) 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(3.5rem, 6vw, 5rem);
+}
+
+.eyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: oklch(50% 0.05 50);
+  margin-bottom: 1rem;
+}
+
+.heading {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin: 0;
 }
 
 .item {
-  padding-block: 3rem;
-  border-top: 1px solid var(--color-gray-light);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
 }
 
 .item:last-child {
-  border-bottom: 1px solid var(--color-gray-light);
+  margin-bottom: 0;
+}
+
+.imageBox {
+  position: relative;
+  flex: 1 1 340px;
+  aspect-ratio: 4 / 3;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.textBox {
+  flex: 1 1 340px;
 }
 
 .quote {
-  margin: 0;
-  max-width: 44rem;
-}
-
-.quote p {
-  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-family: var(--font-serif-jp);
+  font-size: clamp(1.15rem, 1.9vw, 1.4rem);
   line-height: 1.8;
-  font-weight: 500;
-  color: var(--color-black);
+  margin: 0 0 1.5rem;
 }
 
 .source {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.5rem;
-}
-
-.source::before {
-  content: "—";
-  color: var(--color-gray);
+  padding-top: 1.1rem;
+  border-top: 1px solid oklch(78% 0.02 60);
 }
 
 .storeName {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--color-black);
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
 }
 
 .person {
-  font-size: 0.85rem;
-  color: var(--color-gray);
-}
-
-.ctaRow {
-  margin-top: 3rem;
-  text-align: center;
+  font-size: 13px;
+  color: oklch(50% 0.02 55);
+  margin: 0;
 }

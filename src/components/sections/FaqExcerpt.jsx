@@ -1,26 +1,43 @@
-import { Section } from "@/components/ui/Section";
-import { SectionTitle } from "@/components/ui/SectionTitle";
-import { Button } from "@/components/ui/Button";
-import { faq } from "@/lib/data/faq";
+import Link from "next/link";
 import styles from "./FaqExcerpt.module.css";
+
+// design4ハンドオフのHOME専用FAQ抜粋(3件)。/faqページの共有データ
+// (src/lib/data/faq.js)とは内容が異なるため独立させている。
+const faqItems = [
+  {
+    question: "どのような業態で取り扱えますか？",
+    answer: "ホテル、レストラン、カフェ、バー、小売店など、京都市内を中心とした事業者様にご利用いただいています。",
+  },
+  {
+    question: "小ロットでも導入できますか？",
+    answer: "はい。大きなロットを抱えずに、必要な数量からご相談いただけます。",
+  },
+  {
+    question: "添加物は使用していますか？",
+    answer: "無添加・無着色で製造しています。",
+  },
+];
 
 export function FaqExcerpt() {
   return (
-    <Section>
-      <SectionTitle eyebrow="FAQ" title="よくあるご質問" align="left" />
-      <dl className={styles.list}>
-        {faq.slice(0, 3).map((item) => (
-          <div key={item.question} className={styles.item}>
-            <dt>{item.question}</dt>
-            <dd>{item.answer}</dd>
-          </div>
-        ))}
-      </dl>
-      <div className={styles.more}>
-        <Button href="/faq" variant="outline">
-          FAQをすべて見る
-        </Button>
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <p className={styles.eyebrow}>FAQ</p>
+        <h2 className={styles.heading}>よくある質問</h2>
+        <div className={styles.list}>
+          {faqItems.map((item) => (
+            <div key={item.question} className={styles.item}>
+              <p className={styles.question}>{item.question}</p>
+              <p className={styles.answer}>{item.answer}</p>
+            </div>
+          ))}
+        </div>
+        <div className={styles.more}>
+          <Link href="/faq" className={styles.link}>
+            よくある質問をすべて見る
+          </Link>
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }

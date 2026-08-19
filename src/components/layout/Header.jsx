@@ -2,34 +2,44 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { NAV_LINKS, PRIMARY_CTA, SITE } from "@/lib/constants";
+import { NAV_LINKS, PRIMARY_CTA, BASE_SHOP_URL, BASE_SHOP_LABEL } from "@/lib/constants";
 import styles from "./Header.module.css";
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [brandLine1, ...brandRest] = SITE.fullName.split(" ");
-  const brandLine2 = brandRest.join(" ");
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const contactHref = isHome ? "#contact" : PRIMARY_CTA.href;
+
+  function resolveHref(link) {
+    return isHome && link.anchorOnHome ? link.anchorOnHome : link.href;
+  }
 
   return (
     <header className={styles.header}>
-      <Container className={styles.bar}>
+      <Container className={styles.bar} maxWidth="1320px">
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoLine}>{brandLine1}</span>
-          <span className={styles.logoLine}>{brandLine2}</span>
+          <span className={styles.logoLabel}>京都クラフトドリンクメーカー</span>
+          <span className={styles.logoName}>Wir Journey</span>
         </Link>
 
-        <nav className={styles.nav} aria-label="グローバルナビゲーション">
-          {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className={styles.navLink}>
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className={styles.ctaDesktop}>
-          <Button href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</Button>
+        <div className={styles.desktopGroup}>
+          <nav className={styles.nav} aria-label="グローバルナビゲーション">
+            {NAV_LINKS.map((link) => (
+              <Link key={link.label} href={resolveHref(link)} className={styles.navLink}>
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <Button href={contactHref} className={styles.ctaButton}>
+            {PRIMARY_CTA.label}
+          </Button>
+          <a href={BASE_SHOP_URL} target="_blank" rel="noopener" className={styles.baseLink}>
+            {BASE_SHOP_LABEL}
+          </a>
         </div>
 
         <button
@@ -46,21 +56,29 @@ export function Header() {
       {open && (
         <nav id="mobile-nav" className={styles.mobileNav} aria-label="モバイルナビゲーション">
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <Link key={link.label} href={resolveHref(link)} onClick={() => setOpen(false)} className={styles.mobileNavLink}>
               {link.label}
             </Link>
           ))}
-          <Link href={PRIMARY_CTA.href} onClick={() => setOpen(false)}>
+          <a href={contactHref} onClick={() => setOpen(false)} className={styles.mobileCta}>
             {PRIMARY_CTA.label}
-          </Link>
+          </a>
+          <a
+            href={BASE_SHOP_URL}
+            target="_blank"
+            rel="noopener"
+            onClick={() => setOpen(false)}
+            className={styles.mobileBaseLink}
+          >
+            {BASE_SHOP_LABEL}
+          </a>
         </nav>
       )}
 
-      {/* スマートフォンではPrimary CTAの固定表示を推奨(Draft 0.8方針) */}
       <div className={styles.fixedCta}>
-        <Button href={PRIMARY_CTA.href} className={styles.fixedCtaButton}>
+        <a href={contactHref} className={styles.fixedCtaButton}>
           {PRIMARY_CTA.label}
-        </Button>
+        </a>
       </div>
     </header>
   );

@@ -1,0 +1,67 @@
+.section {
+  background: oklch(94.5% 0.02 70);
+  border-top: 1px solid oklch(88% 0.014 70);
+  border-bottom: 1px solid oklch(88% 0.014 70);
+  padding: clamp(4.5rem, 8vw, 6.5rem) 0;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+
+.eyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: oklch(50% 0.05 50);
+  margin-bottom: 1rem;
+}
+
+.heading {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin: 0 0 0.85rem;
+}
+
+.lead {
+  font-size: 14px;
+  color: oklch(48% 0.02 55);
+  margin: 0 0 2.75rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  border-top: 1px solid oklch(78% 0.02 60);
+  gap: 0;
+}
+
+.item {
+  padding: 2rem clamp(0px, 2.5vw, 2rem) 0 0;
+}
+
+.step {
+  display: block;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  color: oklch(50% 0.05 50);
+  margin-bottom: 0.85rem;
+}
+
+.label {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin: 0 0 0.6rem;
+}
+
+.desc {
+  font-size: 13px;
+  line-height: 1.75;
+  color: oklch(48% 0.02 55);
+  margin: 0;
+}

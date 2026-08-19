@@ -1,36 +1,100 @@
+/*
+  Ported from the Claude Design "design4" HOME handoff (Home.dc.html, 2026-08-18).
+  Color values are literal oklch() per the handoff spec (not tokenized in
+  globals.css yet — see README §2). H1 uses var(--font-serif-jp) (Shippori
+  Mincho, loaded in layout.js); other HOME sections still use the default
+  site font stack until ported.
+*/
+
 .hero {
-  display: grid;
-  gap: 3rem;
-  align-items: center;
+  position: relative;
+  min-height: min(720px, 88vh);
+  display: flex;
+  align-items: flex-end;
 }
 
-@media (min-width: 900px) {
-  .hero {
-    grid-template-columns: 1.1fr 0.9fr;
-  }
+.imageLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: var(--color-gray);
+.image {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    oklch(20% 0.02 45 / 0.72) 0%,
+    oklch(20% 0.02 45 / 0.32) 55%,
+    oklch(20% 0.02 45 / 0.12) 100%
+  );
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 4vw, 3rem) clamp(3.5rem, 6vw, 5rem);
+  width: 100%;
+}
+
+.inner {
+  max-width: 640px;
 }
 
 .headline {
-  margin-top: 1rem;
-  font-size: clamp(2rem, 5vw, 3.25rem);
-  font-weight: 700;
-  line-height: 1.35;
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.4;
+  color: oklch(98% 0.008 80);
+  margin: 0 0 1.5rem;
 }
 
 .subcopy {
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
+  font-size: 15px;
   line-height: 1.9;
-  color: var(--color-charcoal);
-  max-width: 34rem;
+  color: oklch(90% 0.02 70);
+  max-width: 38ch;
+  margin: 0 0 2.25rem;
 }
 
 .ctaRow {
-  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+.ctaPrimary {
+  background: oklch(30% 0.05 45);
+  color: oklch(97% 0.012 75);
+}
+
+.ctaPrimary:hover {
+  background: oklch(24% 0.025 50);
+}
+
+.ctaSecondary {
+  background: oklch(97% 0.012 75);
+  color: oklch(24% 0.025 50);
+}
+
+.ctaSecondary:hover {
+  background: oklch(90% 0.02 70);
 }

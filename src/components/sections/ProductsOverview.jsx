@@ -1,31 +1,63 @@
-import { Section } from "@/components/ui/Section";
-import { SectionTitle } from "@/components/ui/SectionTitle";
-import { Button } from "@/components/ui/Button";
-import { PRODUCT_SERIES, getProductsBySeries } from "@/lib/data/products";
+import Image from "next/image";
+import Link from "next/link";
+import { PRODUCT_SERIES } from "@/lib/data/products";
 import styles from "./ProductsOverview.module.css";
 
-export function ProductsOverview() {
-  const series = PRODUCT_SERIES.filter((s) => getProductsBySeries(s.key).length > 0);
+// design4ハンドオフのシリーズ紹介文・画像(Draft 0.8商品マスタとは別に、
+// HOME PRODUCTSセクション専用のシリーズ単位コピーとして扱う)。
+const seriesContent = {
+  rtd: {
+    desc: "京檸檬を使ったボトルタイプのクラフトコーラ。開栓してそのまま提供できます。現在、発売に向けて準備中です。",
+    image: "/images/home/product-0.webp",
+  },
+  sparkling: {
+    desc: "食事に合わせやすい、澄んだ味わいのスパークリング。乾杯やペアリングの選択肢として。",
+    image: "/images/home/product-1.webp",
+  },
+  cola: {
+    desc: "スパイスの香りが立つクラフトコーラ。ソーダ割りやアレンジで店らしい一杯に。",
+    image: "/images/home/product-2.webp",
+  },
+  chai: {
+    desc: "香り高いチャイ。ホットでもアイスでも、通年のメニューとして扱えます。",
+    image: "/images/home/product-3.webp",
+  },
+};
 
+export function ProductsOverview() {
   return (
-    <Section tone="surface">
-      <SectionTitle
-        eyebrow="Products"
-        title="商品ラインナップ"
-        description="RTD・クラフトスパークリング・クラフトコーラ・クラフトチャイを一体的なラインナップとしてご紹介します。"
-      />
-      <div className={styles.grid}>
-        {series.map((s) => (
-          <div key={s.key} className={styles.seriesCard}>
-            <h3>{s.label}</h3>
-          </div>
-        ))}
+    <section id="products" className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <p className={styles.eyebrow}>PRODUCTS</p>
+          <h2 className={styles.heading}>4つのシリーズ</h2>
+        </div>
+        <div className={styles.grid}>
+          {PRODUCT_SERIES.map((series) => {
+            const content = seriesContent[series.key];
+            return (
+              <div key={series.key} className={styles.item}>
+                <h3 className={styles.itemTitle}>{series.label}</h3>
+                <div className={styles.imageBox}>
+                  <Image
+                    src={content.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1000px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className={styles.image}
+                  />
+                </div>
+                <p className={styles.desc}>{content.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+        <div className={styles.more}>
+          <Link href="/products" className={styles.moreLink}>
+            商品をもっとみる
+          </Link>
+        </div>
       </div>
-      <div className={styles.more}>
-        <Button href="/products" variant="outline">
-          商品一覧を見る
-        </Button>
-      </div>
-    </Section>
+    </section>
   );
 }

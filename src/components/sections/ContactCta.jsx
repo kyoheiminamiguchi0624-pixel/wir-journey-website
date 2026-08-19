@@ -1,24 +1,30 @@
-import { Section } from "@/components/ui/Section";
-import { Button } from "@/components/ui/Button";
-import { PRIMARY_CTA, SECONDARY_CTA, LEAD_CTA } from "@/lib/constants";
+import Link from "next/link";
 import styles from "./ContactCta.module.css";
 
 export function ContactCta() {
   return (
-    <Section tone="surface">
-      <div className={styles.wrap}>
-        <h2>まずはお気軽にご相談ください</h2>
-        <p>業務用のお取引・商品・サンプルについて、お問い合わせフォームより承っております。</p>
+    <section id="contact" className={styles.section}>
+      <div className={styles.container}>
+        <p className={styles.eyebrow}>CONTACT</p>
+        <h2 className={styles.heading}>
+          業務用のお取引について、
+          <br />
+          お気軽にご相談ください。
+        </h2>
+        <p className={styles.body}>
+          業態や提供スタイルをお聞かせください。
+          <br />
+          相性の良い商品をご案内します。
+        </p>
         <div className={styles.ctaRow}>
-          <Button href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</Button>
-          <Button href={SECONDARY_CTA.href} variant="outline">
-            {SECONDARY_CTA.label}
-          </Button>
-          <Button href={LEAD_CTA.href} variant="outline">
-            {LEAD_CTA.label}
-          </Button>
+          <Link href="/contact" className={styles.ctaPrimary}>
+            業務用のお取引について相談する
+          </Link>
+          <Link href="/products" className={styles.ctaSecondary}>
+            商品を見る
+          </Link>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

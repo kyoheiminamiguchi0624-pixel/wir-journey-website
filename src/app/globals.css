@@ -16,6 +16,8 @@
 
   --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+  --font-serif-jp: var(--font-shippori-mincho), serif;
+  --font-accent: var(--font-eb-garamond), serif;
 
   --container-width: 1200px;
   --container-narrow: 760px;
@@ -56,8 +58,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* モバイル固定CTA(Header)の分だけ本文下部に余白を確保 */
-@media (max-width: 767px) {
+/* モバイル固定CTA(Header)の分だけ本文下部に余白を確保(design4のisMobile境界=1000px) */
+@media (max-width: 999px) {
   body {
     padding-bottom: 4.5rem;
   }
