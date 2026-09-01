@@ -138,6 +138,14 @@
   margin: 0;
 }
 
+/* 他の見出しと同じ構造(vw係数が小さく、モバイルでは実質固定値)のため、
+   同様にモバイル専用clampへ差し替えて<br />区切りの各行が確実に収まるようにする。 */
+@media (max-width: 999px) {
+  .ctaText {
+    font-size: clamp(1.15rem, 5.5vw, 1.55rem);
+  }
+}
+
 .ctaButton {
   background: var(--color-white);
   color: var(--color-cta);

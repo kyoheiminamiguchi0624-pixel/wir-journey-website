@@ -23,6 +23,15 @@
   margin: 0 0 1.75rem;
 }
 
+/* モバイル幅では2.6vwが最小値を下回り実質固定24pxとなり、<br />で
+   区切った見出し(まず小さく、試してみる。)がさらに折り返されるおそれが
+   あったため、モバイルのみ画面幅追従のclampへ差し替える(PCの値は変更しない)。 */
+@media (max-width: 999px) {
+  .sectionHeadingSm {
+    font-size: clamp(1.4rem, 6.5vw, 1.9rem);
+  }
+}
+
 /* ABOUT OEM */
 .intro {
   display: flex;

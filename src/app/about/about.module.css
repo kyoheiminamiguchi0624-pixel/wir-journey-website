@@ -15,6 +15,15 @@
   margin: 0 0 1.5rem;
 }
 
+/* モバイル幅では2.8vwが最小値を下回り実質固定25.6pxとなり、<br />で
+   区切った見出し(WHY WIR JOURNEY)がさらに折り返されていたため、
+   モバイルのみ画面幅追従のclampへ差し替える(PCの値は変更しない)。 */
+@media (max-width: 999px) {
+  .sectionHeading {
+    font-size: clamp(1.4rem, 6.5vw, 2.1rem);
+  }
+}
+
 .hero {
   text-align: center;
 }
@@ -135,6 +144,13 @@
   width: 75%;
   max-width: 600px;
   margin: 0 auto;
+}
+
+/* モバイルでは75%制約により写真が不必要に小さくなるため、ほぼ全幅まで広げる。 */
+@media (max-width: 999px) {
+  .foundersImage {
+    width: 100%;
+  }
 }
 
 .ctaBlock {

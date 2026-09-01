@@ -30,6 +30,22 @@
   aspect-ratio: 4 / 3;
 }
 
+/* PC(2カラム)ではテキスト列と高さを揃えるためのmin-height:460px・
+   写真を78%幅に収める余白付きレイアウトだったが、モバイルでは1カラムに
+   積み上がるため、この高さ指定がそのまま「小さな写真の上下に大きな
+   空白」を作る原因になっていた。モバイルのみ高さ指定・余白・幅縮小を解除し、
+   写真をコンテンツ幅いっぱいに表示する(PCの見た目は変更しない)。 */
+@media (max-width: 999px) {
+  .imageCol {
+    min-height: auto;
+    padding: 0;
+  }
+
+  .imageBox {
+    width: 100%;
+  }
+}
+
 .image {
   object-fit: cover;
 }
@@ -60,6 +76,15 @@
   font-size: clamp(1.75rem, 3vw, 2.25rem);
   line-height: 1.5;
   margin-bottom: 2.5rem;
+}
+
+/* モバイル幅では3vwが最小値を下回り実質固定28pxとなり、<br />で区切った
+   見出しがさらに折り返されるおそれがあったため、モバイルのみ画面幅追従の
+   clampへ差し替える(PCの値は変更しない)。 */
+@media (max-width: 999px) {
+  .heading {
+    font-size: clamp(1.4rem, 6.5vw, 2.25rem);
+  }
 }
 
 .item {

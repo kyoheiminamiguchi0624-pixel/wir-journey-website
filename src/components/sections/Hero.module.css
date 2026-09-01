@@ -57,6 +57,17 @@
   margin: 0 0 1.5rem;
 }
 
+/* PC用clamp(2.25rem,5vw,3.75rem)は、5vwがモバイル幅(390px≒19.5px)では
+   最小値2.25rem(36px)を下回るため常に36pxの固定値になっていた。その結果、
+   <br />で区切った各行(例:「京都のドリンクに、」)自体が画面幅に収まらず
+   意図しない位置でさらに折り返されていた。モバイルのみ、画面幅に追従して
+   縮小するclampへ差し替える(PC側の値・見た目は変更しない)。 */
+@media (max-width: 999px) {
+  .headline {
+    font-size: clamp(1.75rem, 6.5vw, 3.75rem);
+  }
+}
+
 .subcopy {
   font-size: 15px;
   line-height: 1.9;
