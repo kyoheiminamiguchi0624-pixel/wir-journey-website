@@ -1,13 +1,14 @@
 // Site-wide values. contactEmailは正式値が決まるまでのプレースホルダー(未使用)。
-// urlは独自ドメイン取得までの暫定値としてVercel標準URLを使用(sitemap/robots/metadataの
-// canonical/OGURLが実在しないドメインを指さないようにするため)。独自ドメイン取得後に更新する。
+// urlは正式ドメイン(https://www.wirjourney.com)。canonical/metadataBase/OG/
+// sitemap/robots/JSON-LDはすべてこの値を参照するため、他ファイルへ個別に
+// ハードコードしないこと。
 export const SITE = {
   name: "Wir Journey",
   fullName: "京都クラフトドリンクメーカー Wir Journey",
   tagline: "京都のドリンクに、もっと選択肢を。",
   description:
     "京都クラフトドリンクメーカー Wir Journeyは、京都の素材とクラフトの発想から生まれた完成されたクラフトドリンクを、ホテル・レストラン・カフェ・小売店などの事業者様へ。小ロットから対応しています。",
-  url: "https://wir-journey-website.vercel.app",
+  url: "https://www.wirjourney.com",
   contactEmail: "contact@wir-journey.example.com",
 };
 

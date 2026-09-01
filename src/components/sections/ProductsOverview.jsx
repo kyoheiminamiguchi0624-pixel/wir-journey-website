@@ -9,18 +9,22 @@ const seriesContent = {
   rtd: {
     desc: "京檸檬を使ったボトルタイプのクラフトコーラ。開栓してそのまま提供できます。現在、発売に向けて準備中です。",
     image: "/images/home/product-0.webp",
+    imageAlt: "京檸檬クラフトコーラの商品写真",
   },
   sparkling: {
     desc: "食事に合わせやすい、澄んだ味わいのスパークリング。乾杯やペアリングの選択肢として。",
     image: "/images/home/product-1.webp",
+    imageAlt: "京檸檬クラフトスパークリングの商品写真",
   },
   cola: {
     desc: "スパイスの香りが立つクラフトコーラ。ソーダ割りやアレンジで店らしい一杯に。",
     image: "/images/home/product-2.webp",
+    imageAlt: "京都 リンゴノコーラの商品写真",
   },
   chai: {
     desc: "香り高いチャイ。ホットでもアイスでも、通年のメニューとして扱えます。",
     image: "/images/home/product-3.webp",
+    imageAlt: "京都 スパイスノチャイの商品写真",
   },
 };
 
@@ -41,7 +45,7 @@ export function ProductsOverview() {
                 <div className={styles.imageBox}>
                   <Image
                     src={content.image}
-                    alt=""
+                    alt={content.imageAlt}
                     fill
                     sizes="(min-width: 1000px) 25vw, (min-width: 640px) 50vw, 100vw"
                     className={styles.image}

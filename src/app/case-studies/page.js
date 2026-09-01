@@ -20,6 +20,7 @@ export default function CaseStudiesPage() {
         <SectionTitle
           eyebrow="Case Studies"
           title="導入事例"
+          titleAs="h1"
           description={
             caseStudies.length === 0
               ? "現在、掲載できる導入事例を準備中です。実店舗様の許諾が取れ次第、順次公開いたします。"

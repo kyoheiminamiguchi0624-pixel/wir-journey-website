@@ -50,6 +50,7 @@ export default function ForBusinessPage() {
           eyebrow="For Business"
           title="Wir Journeyを導入する"
           description="京都の素材とクラフトの発想から生まれた完成されたクラフトドリンクを、事業者様の商品開発の負担なく導入いただけます。小ロットから対応しています。"
+          titleAs="h1"
         />
       </Section>
 

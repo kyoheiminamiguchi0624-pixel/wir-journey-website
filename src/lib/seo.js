@@ -1,11 +1,27 @@
 import { SITE } from "@/lib/constants";
 
+// サイト共通OGP画像(/products ヘッダー画像 products-hero-visual.webp をそのまま
+// PNG化したもの、src/app/opengraph-image.png・twitter-image.png)。ページ・商品
+// ごとに変更しない。App Routerのファイル規約(opengraph-image.png)は各ルート
+// segmentがbuildMetadata()で独自のopenGraph/twitterオブジェクトを返すことで
+// 継承されなくなるため、ここで明示的に指定する。
+const OG_IMAGE = {
+  url: `${SITE.url}/opengraph-image.png`,
+  width: 700,
+  height: 466,
+  alt: SITE.fullName,
+};
+
 export function buildMetadata({ title, description, path }) {
   const url = `${SITE.url}${path}`;
   const fullTitle = path === "/" ? `${SITE.fullName}｜${SITE.tagline}` : `${title}｜${SITE.name}`;
 
   return {
-    title: fullTitle,
+    // layout.jsのtitle.template("%s｜Wir Journey")は子セグメントのtitleに
+    // 適用されるため、既にブランド名を含むfullTitleをプレーン文字列で渡すと
+    // 「PRODUCTS｜Wir Journey｜Wir Journey」のように二重になる。absoluteで
+    // 渡し、テンプレートを適用させずfullTitleをそのまま使用させる。
+    title: { absolute: fullTitle },
     description,
     alternates: { canonical: url },
     openGraph: {
@@ -15,11 +31,13 @@ export function buildMetadata({ title, description, path }) {
       siteName: SITE.fullName,
       locale: "ja_JP",
       type: "website",
+      images: [OG_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
+      images: [OG_IMAGE.url],
     },
     robots: { index: true, follow: true },
   };

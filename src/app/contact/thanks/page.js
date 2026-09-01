@@ -3,11 +3,15 @@ import { Button } from "@/components/ui/Button";
 import { buildMetadata } from "@/lib/seo";
 import styles from "./thanks.module.css";
 
-export const metadata = buildMetadata({
-  title: "お問い合わせありがとうございます",
-  description: "お問い合わせを受け付けました。",
-  path: "/contact/thanks",
-});
+export const metadata = {
+  ...buildMetadata({
+    title: "お問い合わせありがとうございます",
+    description: "お問い合わせを受け付けました。",
+    path: "/contact/thanks",
+  }),
+  // フォーム送信後の完了ページのみ検索エンジンにインデックスさせない。
+  robots: { index: false, follow: false },
+};
 
 export default function ContactThanksPage() {
   return (
