@@ -1,10 +1,12 @@
 import { Container } from "./Container";
 import styles from "./Section.module.css";
 
-export function Section({ children, tone = "white", narrow = false, maxWidth, className = "" }) {
-  const toneClass = tone === "surface" ? styles.surface : styles.white;
+const TONE_CLASSES = { white: "white", surface: "surface", cta: "cta" };
+
+export function Section({ children, id, tone = "white", narrow = false, maxWidth, className = "" }) {
+  const toneClass = styles[TONE_CLASSES[tone] || "white"];
   return (
-    <section className={`${styles.section} ${toneClass} ${className}`}>
+    <section id={id} className={`${styles.section} ${toneClass} ${className}`}>
       <Container className={narrow ? styles.narrow : ""} maxWidth={maxWidth}>
         {children}
       </Container>

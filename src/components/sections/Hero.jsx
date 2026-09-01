@@ -24,7 +24,9 @@ export function Hero() {
             もっと選択肢を。
           </h1>
           <p className={styles.subcopy}>
-            京都・西陣のノンアルコール専業クラフトドリンクメーカー。ホテル・レストラン・カフェ・小売店様へ、無添加・無着色のドリンクをお届けしています。
+            京都・西陣のノンアルコール専業クラフトドリンクメーカー。
+            <br />
+            ホテル・レストラン・カフェ・小売店様へ、無添加・無着色のドリンクをお届けしています。
           </p>
           <div className={styles.ctaRow}>
             <a href="#contact" className={styles.ctaPrimary}>

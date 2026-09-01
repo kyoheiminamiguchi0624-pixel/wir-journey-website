@@ -12,12 +12,14 @@
 }
 
 .solid {
-  background: var(--color-black);
+  background: var(--color-cta);
   color: var(--color-white);
+  border-color: var(--color-cta);
 }
 
 .solid:hover {
-  background: var(--color-charcoal);
+  background: var(--color-black);
+  border-color: var(--color-black);
 }
 
 .outline {

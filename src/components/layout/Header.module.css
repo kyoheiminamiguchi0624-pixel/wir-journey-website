@@ -17,10 +17,38 @@
 
 .logo {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 0.4rem;
   text-decoration: none;
   flex-shrink: 0;
+}
+
+@media (min-width: 1000px) {
+  .logo {
+    gap: 0.5rem;
+  }
+}
+
+.logoMark {
+  display: block;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+/* .bar は flex-wrap:nowrap のため、モバイル(ハンバーガー表示)では
+   ロゴ+テキストとメニューボタンの合計幅に余裕を持たせておく。 */
+@media (min-width: 1000px) {
+  .logoMark {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .logoLabel {
@@ -81,6 +109,39 @@
   border-bottom-color: oklch(38% 0.06 45);
 }
 
+.instagramLink {
+  display: flex;
+  align-items: center;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-left: 0.25rem;
+}
+
+.instagramLink:hover {
+  color: oklch(38% 0.06 45);
+}
+
+.instagramLink img {
+  display: block;
+  border-radius: 5px;
+}
+
+.mobileInstagramLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 0;
+  font-size: 14px;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.mobileInstagramLink img {
+  display: block;
+  border-radius: 4px;
+}
+
 .menuButton {
   background: none;
   border: 1px solid var(--color-black);
@@ -108,8 +169,8 @@
 
 .mobileCta {
   margin-top: 1.25rem;
-  background: oklch(30% 0.05 45);
-  color: oklch(97% 0.012 75);
+  background: var(--color-cta);
+  color: var(--color-white);
   text-align: center;
   padding: 0.9rem;
   text-decoration: none;
@@ -138,8 +199,8 @@
 .fixedCtaButton {
   display: block;
   text-align: center;
-  background: oklch(30% 0.05 45);
-  color: oklch(97% 0.012 75);
+  background: var(--color-cta);
+  color: var(--color-white);
   padding: 0.9rem;
   font-size: 14px;
   text-decoration: none;

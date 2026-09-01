@@ -1,6 +1,5 @@
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Section } from "@/components/ui/Section";
-import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { buildMetadata } from "@/lib/seo";
 import styles from "./contact.module.css";
@@ -15,16 +14,19 @@ export default function ContactPage() {
   return (
     <>
       <Breadcrumb items={[{ name: "CONTACT", path: "/contact" }]} />
-      <Section narrow>
-        <SectionTitle
-          eyebrow="Contact"
-          title="お問い合わせ"
-          description="業務用のお取引・商品・サンプル・OEMについて、お気軽にご相談ください。"
-          align="left"
-        />
-        <div className={styles.formWrap}>
-          <ContactForm />
+
+      <Section tone="surface">
+        <div className={styles.hero}>
+          <p className={styles.eyebrow}>CONTACT</p>
+          <h1 className={styles.heroTitle}>お問い合わせ</h1>
+          <p className={styles.heroLead}>
+            業務用のお取引はもちろん、商品やサンプル、OEMについてなど、まだご相談内容が明確でない場合もお気軽にお問い合わせください。
+          </p>
         </div>
+      </Section>
+
+      <Section id="form" narrow className={styles.formSection}>
+        <ContactForm />
       </Section>
     </>
   );

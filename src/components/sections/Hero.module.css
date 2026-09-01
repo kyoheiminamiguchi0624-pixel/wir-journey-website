@@ -61,7 +61,9 @@
   font-size: 15px;
   line-height: 1.9;
   color: oklch(90% 0.02 70);
-  max-width: 38ch;
+  /* 「。」で明示的に改行した2文それぞれが1行に収まる幅を確保する
+     (親.innerのmax-width:640pxまで許容、38chでは狭すぎたため撤廃)。 */
+  max-width: 100%;
   margin: 0 0 2.25rem;
 }
 

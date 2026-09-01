@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
-const REQUIRED_FIELDS = ["companyName", "contactName", "email", "businessType", "inquiryType", "message"];
+// docs/handoff/pages/Contact.dc.html準拠。お名前・会社名・店舗名・メールアドレスのみ必須(*付き)。
+const REQUIRED_FIELDS = ["contactName", "companyName", "email"];
 
 export async function POST(request) {
   let data;
@@ -23,15 +24,12 @@ export async function POST(request) {
   // TODO(本番導入前に対応): メール送信サービス(Resend/SendGrid/nodemailer等)は未接続。
   // サービス選定は正式決定待ちのため、現状はサーバーログへの出力のみ。
   console.log("[contact] new inquiry", {
-    companyName: data.companyName,
     contactName: data.contactName,
+    companyName: data.companyName,
     email: data.email,
     phone: data.phone,
     businessType: data.businessType,
     inquiryType: data.inquiryType,
-    desiredProduct: data.desiredProduct,
-    useCase: data.useCase,
-    timing: data.timing,
     messageLength: data.message?.length,
   });
 

@@ -1,13 +1,52 @@
+.wrap {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.inquiryBlock {
+  margin-bottom: clamp(2.5rem, 4vw, 3.25rem);
+}
+
+.inquiryLabel {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin: 0 0 1.25rem;
+}
+
+.inquiryList {
+  border-top: 1px solid oklch(80% 0.015 65);
+}
+
+.inquiryItem {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid oklch(80% 0.015 65);
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--color-black);
+}
+
+.radio {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-cta);
+  flex-shrink: 0;
+}
+
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  max-width: 640px;
+  gap: 1.75rem;
 }
 
 .row {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 @media (min-width: 640px) {
@@ -19,28 +58,45 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .field label {
-  font-size: 0.8rem;
-  color: var(--color-charcoal);
+  font-size: 13px;
+  color: oklch(45% 0.02 55);
+}
+
+.required {
+  color: var(--color-accent);
 }
 
 .field input,
-.field select,
-.field textarea {
-  font: inherit;
-  padding: 0.75rem 0.9rem;
-  border: 1px solid var(--color-gray-light);
-  border-radius: var(--radius-control);
-  background: var(--color-white);
+.field select {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid oklch(70% 0.02 60);
+  background: transparent;
+  padding: 0.65rem 0.1rem;
+  font-size: 15px;
   color: var(--color-black);
+  border-radius: 0;
+}
+
+.field textarea {
+  width: 100%;
+  border: 1px solid oklch(80% 0.015 65);
+  background: transparent;
+  padding: 0.9rem;
+  font-size: 15px;
+  color: var(--color-black);
+  resize: vertical;
+  line-height: 1.8;
 }
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
+  outline: none;
   border-color: var(--color-black);
 }
 
@@ -49,23 +105,51 @@
   color: #b3261e;
 }
 
+.submitRow {
+  margin-top: 0.75rem;
+}
+
 .submit {
-  align-self: flex-start;
-  padding: 0.9rem 2rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  background: var(--color-black);
+  display: inline-block;
+  background: var(--color-cta);
   color: var(--color-white);
-  border: 1px solid var(--color-black);
-  border-radius: var(--radius-control);
+  border: none;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  padding: 1rem 2.5rem;
   cursor: pointer;
 }
 
 .submit:hover {
-  background: var(--color-charcoal);
+  background: var(--color-black);
 }
 
 .submit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.disclaimer {
+  font-size: 12.5px;
+  line-height: 1.85;
+  color: oklch(55% 0.02 55);
+  margin: 2.5rem 0 0;
+  border-top: 1px solid oklch(85% 0.012 65);
+  padding-top: 1.5rem;
+}
+
+.faqLink {
+  text-align: center;
+  margin: 2rem 0 0;
+}
+
+.faqLink a {
+  font-size: 13px;
+  color: oklch(50% 0.02 55);
+  text-decoration: none;
+  border-bottom: 1px solid oklch(75% 0.02 60);
+}
+
+.faqLink a:hover {
+  color: var(--color-black);
 }

@@ -1,3 +1,34 @@
-.formWrap {
-  margin-top: 2.5rem;
+.eyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+  margin: 0 0 1.25rem;
+}
+
+.hero {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heroTitle {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.85rem, 3.2vw, 2.4rem);
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+
+.heroLead {
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--color-charcoal);
+  max-width: 44ch;
+  margin: 0 auto;
+}
+
+.formSection {
+  scroll-margin-top: 76px;
 }

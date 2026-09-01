@@ -1,63 +1,207 @@
+/*
+  Follows the design language established on HOME (Shippori Mincho / EB Garamond,
+  warm white-to-ivory palette, thin hairlines, minimal radius). Color values are
+  literal oklch() to match HOME's approach without touching globals.css tokens.
+*/
+
+/*
+  左：コピー / 右：画像専用ボックス、の2カラムHero。
+  モバイルは縦積み(上:コピー / 下:画像)にメディアクエリで切り替える。
+  画像ボックスは高さを固定しobject-fit: containで内部表示するため、
+  将来別の比率の画像に差し替えても常に全体が見え、クロップされない。
+*/
+.banner {
+  background: var(--color-surface);
+  padding: clamp(2.5rem, 6vw, 4rem) 0;
+}
+
+.bannerInner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 3rem);
+}
+
+@media (min-width: 768px) {
+  .bannerInner {
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+}
+
+.bannerContent {
+  flex: 1 1 400px;
+}
+
+.bannerText {
+  max-width: 46ch;
+}
+
+.bannerImageBox {
+  flex: 1 1 380px;
+  max-width: 460px;
+  width: 100%;
+}
+
+.bannerEyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: oklch(50% 0.05 50);
+  margin: 0 0 0.75rem;
+}
+
+.bannerHeading {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(2rem, 3.6vw, 2.75rem);
+  line-height: 1.3;
+  color: var(--color-black);
+  margin: 0 0 1rem;
+}
+
+.bannerLead {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: oklch(40% 0.02 55);
+  max-width: 42ch;
+  margin: 0;
+}
+
+/* Hero直後のSection。共通Sectionのpadding-topは大きすぎてHeroと分断されて
+   見えるため、このページのみ上端の余白を縮小する(下端は共通のまま)。 */
+.seriesSection {
+  padding-top: clamp(2rem, 4vw, 4rem);
+}
+
 .seriesBlock {
-  margin-top: 3.5rem;
+  margin-top: clamp(3.5rem, 6vw, 5rem);
 }
 
 .seriesBlock:first-of-type {
-  margin-top: 3rem;
+  margin-top: clamp(1.75rem, 2.75vw, 2.25rem);
+}
+
+/* カテゴリの視覚的な区切り。新しい色相は追加せず、サイト共通の白/アイボリー
+   トークンを交互に使う(RTD=白 / スパークリング=アイボリー / コーラ=白 /
+   チャイ=アイボリー)。背景色のみを変え、余白・カード構造は変更しない。 */
+.seriesBlockSurface {
+  background: var(--color-surface-deep);
+}
+
+.seriesHeader {
+  margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.seriesEyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin: 0 0 0.5rem;
 }
 
 .seriesLabel {
-  font-size: 0.85rem;
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.productGroup {
+  margin-top: 3rem;
+}
+
+.productGroup:first-of-type {
+  margin-top: 0;
+}
+
+.productName {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0 0 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid oklch(88% 0.014 70);
+}
+
+.cardRow {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .cardRow {
+    flex-direction: row;
+    align-items: stretch;
+    /* 常に「2カラム分」の幅で固定する。RTDのように業務用カードがなく
+       子要素が1つしかない場合でも、行の幅自体は他カテゴリと揃え、
+       右側の空白を「カード1枚分」に留める(ページ幅いっぱいに広がる
+       余白にしない)。 */
+    max-width: calc(420px * 2 + 1.5rem);
+  }
+
+  .cardRow > * {
+    flex: 1 1 0;
+    max-width: 420px;
+  }
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid oklch(88% 0.014 70);
+  border-radius: 0;
+  background: var(--color-white);
+}
+
+.productCardBusiness {
+  background: oklch(94.5% 0.02 70);
+}
+
+.cardMedia {
+  margin-bottom: 1.25rem;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 0 1.25rem 1.5rem;
+  text-align: center;
+}
+
+.cardRole {
+  font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-gray);
-  border-bottom: 1px solid var(--color-gray-light);
-  padding-bottom: 0.75rem;
-  margin-bottom: 1.5rem;
+  color: oklch(48% 0.02 55);
+  margin: 0 0 0.5rem;
 }
 
-.grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: 1fr;
+.cardRoleBusiness {
+  margin: 0 0 0.75rem;
 }
 
-@media (min-width: 640px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.cardMeta {
+  font-size: 0.85rem;
+  color: oklch(40% 0.02 55);
+  margin: 0;
 }
 
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+/* 「商品詳細を見る」をボタンとして明確に認識できるUIに(既存Buttonコンポーネントの
+   solid/outlineバリアントを流用し、デザインシステム・カラー・フォントはサイト
+   共通のものをそのまま使う)。カード内で中央揃え、控えめなサイズに調整する。 */
+.cardCtaRow {
+  margin-top: 1.5rem;
+  text-align: center;
 }
 
-.card {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-
-.cardBody {
-  margin-top: 1rem;
-}
-
-.cardHeader {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.cardHeader h4 {
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.format {
-  margin-top: 0.35rem;
+.cardCtaButton {
   font-size: 0.8rem;
-  color: var(--color-gray);
+  padding: 0.65rem 1.6rem;
 }

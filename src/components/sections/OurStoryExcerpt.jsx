@@ -20,7 +20,7 @@ export function OurStoryExcerpt() {
         <div className={styles.textCol}>
           <p className={styles.eyebrow}>OUR STORY</p>
           <h2 className={styles.heading}>
-            祖母のために生まれた
+            祖母のために生まれた、
             <br />
             一杯のコーラ
           </h2>

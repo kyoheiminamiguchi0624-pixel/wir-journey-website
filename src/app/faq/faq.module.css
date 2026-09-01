@@ -1,33 +1,99 @@
-.categories {
-  margin-top: 2.5rem;
+.eyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+  margin: 0 0 1.25rem;
+}
+
+.hero {
+  text-align: center;
+}
+
+.heroTitle {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.85rem, 3.2vw, 2.4rem);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.categoryNav {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 1.25rem clamp(1.25rem, 4vw, 3rem);
   display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  overflow-x: auto;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.categoryBlock h3 {
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  color: var(--color-gray);
-  border-bottom: 1px solid var(--color-gray-light);
-  padding-bottom: 0.75rem;
-}
-
-.list {
-  margin: 1.5rem 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.item dt {
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.item dd {
-  margin: 0.5rem 0 0;
-  font-size: 0.85rem;
+.categoryNavLink {
+  font-size: 13.5px;
   color: var(--color-charcoal);
-  line-height: 1.8;
+  text-decoration: none;
+  flex-shrink: 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.categoryNavLink:hover {
+  color: var(--color-black);
+}
+
+.categoryNavNum {
+  font-family: var(--font-accent);
+  color: var(--color-accent);
+}
+
+.categorySection {
+  scroll-margin-top: 76px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: clamp(2rem, 3vw, 2.5rem);
+}
+
+.categoryNum {
+  font-family: var(--font-accent);
+  font-size: 14px;
+  color: var(--color-accent);
+}
+
+.categoryHeading {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  margin: 0;
+}
+
+.ctaBlock {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ctaLead {
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: oklch(88% 0.02 65);
+  margin: 0 0 1.75rem;
+}
+
+.ctaButton {
+  background: var(--color-white);
+  color: var(--color-cta);
+  border-color: var(--color-white);
+}
+
+.ctaButton:hover {
+  background: oklch(88% 0.02 65);
+  border-color: oklch(88% 0.02 65);
 }

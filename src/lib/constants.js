@@ -1,26 +1,30 @@
-// Site-wide values. url/contactEmail are placeholders pending official values.
+// Site-wide values. contactEmailは正式値が決まるまでのプレースホルダー(未使用)。
+// urlは独自ドメイン取得までの暫定値としてVercel標準URLを使用(sitemap/robots/metadataの
+// canonical/OGURLが実在しないドメインを指さないようにするため)。独自ドメイン取得後に更新する。
 export const SITE = {
   name: "Wir Journey",
   fullName: "京都クラフトドリンクメーカー Wir Journey",
   tagline: "京都のドリンクに、もっと選択肢を。",
   description:
     "京都クラフトドリンクメーカー Wir Journeyは、京都の素材とクラフトの発想から生まれた完成されたクラフトドリンクを、ホテル・レストラン・カフェ・小売店などの事業者様へ。小ロットから対応しています。",
-  url: "https://wir-journey.example.com",
+  url: "https://wir-journey-website.vercel.app",
   contactEmail: "contact@wir-journey.example.com",
 };
 
-// design4ハンドオフ(2026-08-18)のHeaderナビ構成。PRODUCTSはHOME上では
+// docs/handoff/pages/Home.dc.html記載のHeaderナビ構成(302-305行目)。PRODUCTSはHOME上では
 // #productsアンカー、HOME以外では実ページ(/products)へ遷移する(各コンポーネント側で解決)。
 export const NAV_LINKS = [
   { href: "/products", anchorOnHome: "#products", label: "PRODUCTS" },
   { href: "/about", label: "ABOUT US" },
+  { href: "/oem", label: "OEM" },
   { href: "/faq", label: "FAQ" },
 ];
 
-// Footer専用のサイトマップリンク(design4ハンドオフ準拠)。
+// docs/handoff/pages/Home.dc.html記載のFooterリンク構成(349-355行目)。
 export const FOOTER_LINKS = [
   { href: "/products", anchorOnHome: "#products", label: "商品" },
   { href: "/about", label: "私たちについて" },
+  { href: "/oem", label: "OEM" },
   { href: "/faq", label: "よくある質問" },
   { href: "/contact", label: "お問い合わせ" },
 ];
@@ -30,31 +34,34 @@ export const FOOTER_LINKS = [
 export const PRIMARY_CTA = { label: "業務用のお取引について相談する", href: "/contact" };
 export const SECONDARY_CTA = { label: "商品について相談する", href: "/contact" };
 export const LEAD_CTA = { label: "サンプルについて相談する", href: "/contact" };
-export const OEM_CTA = { label: "OEMについて相談する", href: "/oem" };
+// docs/handoff/pages/OEM.dc.html 188-190行目準拠(OEMページ末尾CTAの遷移先は/contact)。
+export const OEM_CTA = { label: "OEMについて相談する", href: "/contact" };
 
 // design4ハンドオフ(2026-08-18)で確定した一般消費者向け外部リンク(BASEショップ)。
 export const BASE_SHOP_URL = "https://wirjourney.base.shop/";
 export const BASE_SHOP_LABEL = "一般のお客様はこちら";
 
+// docs/handoff/pages/Home.dc.html記載のInstagramリンク(40, 56, 272行目)。
+export const INSTAGRAM_URL = "https://www.instagram.com/wir_journey_0523";
+
 // 「小ロットから対応」は具体的な最低発注数量を出さない基本表現(Draft 0.8方針)。
 export const SMALL_LOT_MESSAGE = "小ロットから対応";
 
+// docs/handoff/pages/Contact.dc.html 222-228行目準拠(お問い合わせ内容ラジオボタン)。
+// 「業務用のお取引について」がデフォルト選択(isDefault)。
 export const INQUIRY_TYPES = [
-  { value: "trade", label: "業務用のお取引について相談する" },
-  { value: "product", label: "商品について相談する" },
-  { value: "sample", label: "サンプルについて相談する" },
-  { value: "oem", label: "OEMについて相談する" },
+  { value: "trade", label: "業務用のお取引について" },
+  { value: "product", label: "商品について" },
+  { value: "sample", label: "サンプルについて" },
+  { value: "oem", label: "OEM・商品開発について" },
+  { value: "other", label: "その他" },
 ];
 
-// Draft 0.8 section 32-2 の重点ターゲット業態。
+// docs/handoff/pages/Contact.dc.html 231-236行目準拠。handoff内コメントに
+// 「デザインラフのため主要業態のみ抜粋」と明記されている簡略版(4択)。
 export const BUSINESS_TYPES = [
-  { value: "hotel", label: "ホテル" },
-  { value: "ryokan", label: "旅館" },
-  { value: "restaurant", label: "レストラン・高級レストラン" },
-  { value: "cafe", label: "カフェ" },
-  { value: "bar", label: "バー" },
+  { value: "restaurant", label: "飲食店" },
+  { value: "hotel", label: "ホテル・宿泊施設" },
   { value: "retail", label: "小売店" },
-  { value: "gift-shop", label: "ギフトショップ" },
-  { value: "roadside-station", label: "道の駅・地域産品販売施設" },
   { value: "other", label: "その他" },
 ];

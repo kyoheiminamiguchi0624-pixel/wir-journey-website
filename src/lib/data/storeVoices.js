@@ -3,7 +3,7 @@
 // 引用符「」はStoreVoices.jsx側で一律付与するため、commentには含めません(design4準拠)。
 export const storeVoices = [
   {
-    storeName: "ホテルカンラ京都",
+    storeName: "ホテルカンラ京都 鉄板料理 花六",
     role: "ソムリエ",
     name: "津幡様",
     comment: "間違いなくノンアルコールの中で一番おかわりが出るドリンクです",
@@ -19,7 +19,7 @@ export const storeVoices = [
     direction: "row-reverse",
   },
   {
-    storeName: "GREEN TERRACE",
+    storeName: "riverside café GREEN TERRACE",
     role: "店長",
     name: "玉木様",
     comment: "海外のお客様より、スパイスの香りが良く、本格的な味わいで美味しいといったお声を多くいただきます。",

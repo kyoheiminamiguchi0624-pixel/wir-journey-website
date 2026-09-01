@@ -10,6 +10,11 @@
   background: var(--color-surface);
 }
 
+.cta {
+  background: var(--color-cta);
+  color: var(--color-white);
+}
+
 .narrow {
   max-width: var(--container-narrow);
 }

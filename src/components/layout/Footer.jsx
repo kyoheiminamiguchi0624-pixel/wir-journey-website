@@ -1,10 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { FOOTER_LINKS, PRIMARY_CTA, SITE, BASE_SHOP_URL, BASE_SHOP_LABEL } from "@/lib/constants";
+import {
+  FOOTER_LINKS,
+  PRIMARY_CTA,
+  SITE,
+  BASE_SHOP_URL,
+  BASE_SHOP_LABEL,
+  INSTAGRAM_URL,
+} from "@/lib/constants";
 import styles from "./Footer.module.css";
 
 export function Footer() {
@@ -21,10 +29,13 @@ export function Footer() {
       <Container maxWidth="1240px">
         <div className={styles.row}>
           <div className={styles.brandCol}>
-            <p className={styles.logo}>
-              <span className={styles.logoLabel}>京都クラフトドリンクメーカー</span>
-              <span className={styles.logoName}>{SITE.name}</span>
-            </p>
+            <div className={styles.logo}>
+              <Image src="/images/logo-mark.png" alt="" width={26} height={26} className={styles.logoMark} />
+              <span className={styles.logoText}>
+                <span className={styles.logoLabel}>京都クラフトドリンクメーカー</span>
+                <span className={styles.logoName}>{SITE.name}</span>
+              </span>
+            </div>
             <p className={styles.description}>
               京都・西陣のノンアルコール専業クラフトドリンクメーカー。地域素材を活かした無添加・無着色のドリンクをつくっています。
             </p>
@@ -50,6 +61,16 @@ export function Footer() {
             <Button href={contactHref} className={styles.ctaButton}>
               {PRIMARY_CTA.label}
             </Button>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className={styles.instagramLink}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/instagram-icon-cropped.png" alt="" width="16" height="16" />
+            </a>
           </div>
         </div>
 

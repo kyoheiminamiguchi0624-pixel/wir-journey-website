@@ -1,4 +1,4 @@
-import { Shippori_Mincho, EB_Garamond } from "next/font/google";
+import { Shippori_Mincho, EB_Garamond, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -21,6 +21,14 @@ const ebGaramond = EB_Garamond({
   display: "swap",
 });
 
+// 本文用(DESIGN_GUIDELINES.md準拠)。
+const zenKakuGothicNew = Zen_Kaku_Gothic_New({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-zen-kaku-gothic-new",
+  display: "swap",
+});
+
 export const metadata = {
   metadataBase: new URL(SITE.url),
   title: {
@@ -38,7 +46,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ja" className={`${shipporiMincho.variable} ${ebGaramond.variable}`}>
+    <html
+      lang="ja"
+      className={`${shipporiMincho.variable} ${ebGaramond.variable} ${zenKakuGothicNew.variable}`}
+    >
       <body>
         <script
           type="application/ld+json"

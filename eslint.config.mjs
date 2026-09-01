@@ -9,6 +9,9 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    // Claude Design handoff package (docs/handoff/pages/*.dc.html, support.js,
+    // image-slot.js) is a read-only reference source, not shipped Next.js code.
+    "docs/handoff/**",
   ]),
 ]);
 

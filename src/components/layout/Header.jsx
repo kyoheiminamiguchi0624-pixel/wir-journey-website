@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { NAV_LINKS, PRIMARY_CTA, BASE_SHOP_URL, BASE_SHOP_LABEL } from "@/lib/constants";
+import { NAV_LINKS, PRIMARY_CTA, BASE_SHOP_URL, BASE_SHOP_LABEL, INSTAGRAM_URL } from "@/lib/constants";
 import styles from "./Header.module.css";
 
 export function Header() {
@@ -22,8 +23,11 @@ export function Header() {
     <header className={styles.header}>
       <Container className={styles.bar} maxWidth="1320px">
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoLabel}>京都クラフトドリンクメーカー</span>
-          <span className={styles.logoName}>Wir Journey</span>
+          <Image src="/images/logo-mark.png" alt="" width={28} height={28} className={styles.logoMark} priority />
+          <span className={styles.logoText}>
+            <span className={styles.logoLabel}>京都クラフトドリンクメーカー</span>
+            <span className={styles.logoName}>Wir Journey</span>
+          </span>
         </Link>
 
         <div className={styles.desktopGroup}>
@@ -39,6 +43,16 @@ export function Header() {
           </Button>
           <a href={BASE_SHOP_URL} target="_blank" rel="noopener" className={styles.baseLink}>
             {BASE_SHOP_LABEL}
+          </a>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className={styles.instagramLink}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/instagram-icon-cropped.png" alt="Instagram" width="20" height="20" />
           </a>
         </div>
 
@@ -71,6 +85,16 @@ export function Header() {
             className={styles.mobileBaseLink}
           >
             {BASE_SHOP_LABEL}
+          </a>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className={styles.mobileInstagramLink}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/instagram-icon-cropped.png" alt="" width="18" height="18" /> Instagram
           </a>
         </nav>
       )}

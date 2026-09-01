@@ -18,19 +18,32 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin: 0 0 1rem;
+}
+
+.logoMark {
+  display: block;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
   line-height: 1.4;
 }
 
 .logoLabel {
-  display: block;
   font-size: 12px;
   letter-spacing: 0.06em;
   color: oklch(50% 0.03 55);
 }
 
 .logoName {
-  display: block;
   font-family: var(--font-serif-jp);
   font-size: 19px;
   color: var(--color-black);
@@ -89,6 +102,22 @@
 .ctaButton {
   font-size: 13px;
   padding: 0.75rem 1.4rem;
+}
+
+.instagramLink {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: oklch(48% 0.02 55);
+}
+
+.instagramLink:hover {
+  color: var(--color-black);
+}
+
+.instagramLink img {
+  display: block;
+  border-radius: 4px;
 }
 
 .copyright {
