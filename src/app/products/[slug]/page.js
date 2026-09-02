@@ -13,13 +13,34 @@ export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
 }
 
+// Google検索結果でのdescription表示切れ対策(全角90文字以内)。products.js内の
+// description(Draft 0.8確定原稿、本文表示にも使用)は変更せず、meta description
+// 専用の要約文をここに個別保持する。各要約はproducts.jsのdescriptionに書かれている
+// 情報のみを用いて圧縮したもの(新しい効能・数値・キャッチコピーは追加していない)。
+// 該当スラッグがここに無い場合はproduct.descriptionをそのまま使用する
+// (kyoto-dirty-chaiは元のdescriptionが既に全角90文字以内のため未掲載)。
+const PRODUCT_META_DESCRIPTIONS = {
+  "kyo-remon-craft-cola":
+    "京都育ちの京檸檬を使ったクラフトコーラ。ボトルからそのまま提供できるRTDタイプで、ホテル・レストラン向けの新しいノンアルコールドリンクです。発売に向け準備中。",
+  "kyo-remon-craft-sparkling":
+    "京都育ちの京檸檬を使った、食事に合うクラフトスパークリング。炭酸水で割るノンアルコールドリンクで、ホテル・レストランのメニューやウェルカムドリンクに。",
+  "kyoto-ringo-no-cola":
+    "長野県信州産の完熟りんご100%果汁とスパイスから生まれたフルーティーなクラフトコーラ。炭酸水で割るほか、アレンジドリンクやデザートにも使えます。",
+  "kyoto-ginger-no-cola":
+    "ジンジャーとスパイスの風味を楽しむクラフトコーラ。炭酸水で割るほか、アレンジドリンクにも。カフェやレストラン、バーに取り入れやすいシロップです。",
+  "kyoto-spice-no-chai":
+    "アッサム茶葉とスパイスのクラフトチャイ。ミルクで割るチャイラテが定番で、アレンジドリンクにも。カフェやホテルラウンジ向けの新しいドリンクメニューに。",
+  "kyobancha-craft-chai":
+    "京都の茶文化とクラフトチャイを掛け合わせた新しいドリンク。京番茶ならではの個性とチャイのスパイスを組み合わせています。発売に向け準備中。",
+};
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) return {};
   return buildMetadata({
     title: product.name,
-    description: product.description,
+    description: PRODUCT_META_DESCRIPTIONS[product.slug] ?? product.description,
     path: `/products/${product.slug}`,
   });
 }

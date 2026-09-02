@@ -14,7 +14,7 @@ const OG_IMAGE = {
 
 export function buildMetadata({ title, description, path }) {
   const url = `${SITE.url}${path}`;
-  const fullTitle = path === "/" ? `${SITE.fullName}｜${SITE.tagline}` : `${title}｜${SITE.name}`;
+  const fullTitle = path === "/" ? title : `${title}｜${SITE.name}`;
 
   return {
     // layout.jsのtitle.template("%s｜Wir Journey")は子セグメントのtitleに
