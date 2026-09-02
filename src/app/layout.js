@@ -1,4 +1,5 @@
 import { Shippori_Mincho, EB_Garamond, Zen_Kaku_Gothic_New } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -61,6 +62,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
+        <GoogleAnalytics gaId="G-M3D23MLYYK" />
       </body>
     </html>
   );
