@@ -8,7 +8,7 @@ import { OurStoryExcerpt } from "@/components/sections/OurStoryExcerpt";
 import { FaqExcerpt } from "@/components/sections/FaqExcerpt";
 import { ContactCta } from "@/components/sections/ContactCta";
 import { buildMetadata } from "@/lib/seo";
-import { SITE } from "@/lib/constants";
+import { SITE, SHOW_HOME_CASE_STUDIES } from "@/lib/constants";
 
 export const metadata = buildMetadata({
   title: SITE.fullName,
@@ -22,7 +22,7 @@ export default function Home() {
       <Hero />
       <PainPoints />
       <WhyWirJourney />
-      <StoreVoices />
+      {SHOW_HOME_CASE_STUDIES && <StoreVoices />}
       <ProductsOverview />
       <Flow />
       <OurStoryExcerpt />

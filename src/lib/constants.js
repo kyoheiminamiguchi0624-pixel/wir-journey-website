@@ -48,6 +48,12 @@ export const INSTAGRAM_URL = "https://www.instagram.com/wir_journey_0523";
 // 「小ロットから対応」は具体的な最低発注数量を出さない基本表現(Draft 0.8方針)。
 export const SMALL_LOT_MESSAGE = "小ロットから対応";
 
+// TOPページの「導入店舗様の声」(StoreVoices)を一時非表示にするフラグ。
+// 実店舗様の掲載許可が取れ次第、trueに変更するだけで再表示される。
+// データ(src/lib/data/storeVoices.js)・コンポーネント(StoreVoices.jsx)・
+// /case-studiesページ・ナビの「導入事例」リンクは変更しないこと。
+export const SHOW_HOME_CASE_STUDIES = false;
+
 // docs/handoff/pages/Contact.dc.html 222-228行目準拠(お問い合わせ内容ラジオボタン)。
 // 「業務用のお取引について」がデフォルト選択(isDefault)。
 export const INQUIRY_TYPES = [
