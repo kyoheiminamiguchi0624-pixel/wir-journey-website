@@ -1,0 +1,26 @@
+.wrap {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.wrap h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.wrap p {
+  font-size: 0.9rem;
+  color: var(--color-charcoal);
+  line-height: 1.8;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+}
