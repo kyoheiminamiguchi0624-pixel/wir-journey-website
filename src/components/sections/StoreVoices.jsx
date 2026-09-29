@@ -30,7 +30,7 @@ export function StoreVoices() {
               <div className={styles.source}>
                 <p className={styles.storeName}>{voice.storeName}</p>
                 <p className={styles.person}>
-                  {voice.role} {voice.name}
+                  {[voice.role, voice.name].filter(Boolean).join(" ")}
                 </p>
               </div>
             </div>
