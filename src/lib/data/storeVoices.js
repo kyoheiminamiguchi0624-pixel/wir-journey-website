@@ -3,10 +3,11 @@
 // 引用符「」はStoreVoices.jsx側で一律付与するため、commentには含めません(design4準拠)。
 export const storeVoices = [
   {
-    storeName: "ホテルカンラ京都 鉄板料理 花六",
-    role: "ソムリエ",
+    storeName: "ホテル カンラ 京都 鉄板料理 花六",
+    role: "",
     name: "津幡様",
-    comment: "間違いなくノンアルコールの中で一番おかわりが出るドリンクです",
+    comment:
+      "鉄板料理 花六は、従来の鉄板焼きの枠にとらわれない独創的な鉄板料理を提供しています。レモンを使ったクラフトスパークリングは、当店の鉄板料理の個性との相性もよく、新鮮な楽しみをくれる一杯です。",
     image: "/images/home/testimonial-0.webp",
     direction: "row",
   },
