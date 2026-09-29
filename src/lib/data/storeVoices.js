@@ -7,7 +7,7 @@ export const storeVoices = [
     role: "",
     name: "津幡様",
     comment:
-      "Wir Journeyのドリンクは、当店の独創的な鉄板料理の個性との相性もよく、新鮮な楽しみをくれる一杯です。",
+      "Wir Journeyのドリンクは、当店の独創的な鉄板料理との相性もよく、新鮮な楽しみをくれる一杯です。",
     image: "/images/home/testimonial-0.webp",
     direction: "row",
   },
