@@ -13,7 +13,7 @@ const initialState = {
   companyName: "",
   email: "",
   phone: "",
-  businessType: BUSINESS_TYPES[0].value,
+  businessType: "",
   inquiryType: INQUIRY_TYPES[0].value,
   message: "",
 };
@@ -120,6 +120,7 @@ export function ContactForm() {
         <div className={styles.field}>
           <label htmlFor="businessType">業種</label>
           <select id="businessType" name="businessType" value={values.businessType} onChange={handleChange}>
+            <option value="">選択してください</option>
             {BUSINESS_TYPES.map((type) => (
               <option key={type.value} value={type.value}>
                 {type.label}
