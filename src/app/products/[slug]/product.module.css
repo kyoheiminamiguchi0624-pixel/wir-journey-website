@@ -164,91 +164,46 @@
   border-color: oklch(88% 0.02 65);
 }
 
-/* お取引条件(希望小売価格・最小発注数・送料・POP)。罫線のみの表で、カードUIは使わない。 */
-.trade {
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.tradeHeading {
-  font-family: var(--font-serif-jp);
-  font-weight: 500;
-  font-size: clamp(1.4rem, 2.4vw, 1.75rem);
-  margin: 0 0 1.5rem;
-}
-
-.tradeTableWrap {
-  overflow-x: auto;
-}
-
-.tradeTable {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  line-height: 1.7;
+/* お取引条件(希望小売価格・最小発注数・送料・販促用POP)。希釈比率の下に置く罫線リスト
+   (NEWS記事のRTD仕様と同じ見た目)。 */
+.tradeSpecs {
+  margin: 1.5rem 0 0;
   border-top: 1px solid var(--color-border);
 }
 
-.tradeTable th,
-.tradeTable td {
-  padding: 0.9rem 0.75rem;
+.tradeRow {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 1rem;
+  padding: 0.75rem 0.25rem;
   border-bottom: 1px solid var(--color-border);
-  text-align: left;
-  vertical-align: top;
+  font-size: 14px;
 }
 
-.tradeTable thead th {
+.tradeRow dt {
   font-weight: 700;
   color: var(--color-black);
-  background: var(--color-surface-deep);
 }
 
-.tradeTable tbody th {
-  width: 11rem;
-  font-weight: 700;
-  color: var(--color-black);
-  white-space: nowrap;
-}
-
-.tradeTable td {
+.tradeRow dd {
+  margin: 0;
   color: var(--color-charcoal);
-}
-
-.tradeSize {
-  display: block;
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--color-gray);
 }
 
 .tradeNotes {
   list-style: none;
-  margin: 1.25rem 0 0;
+  margin: 0.9rem 0 0;
   padding: 0;
   display: grid;
-  gap: 0.35rem;
-  font-size: 12.5px;
+  gap: 0.3rem;
+  font-size: 12px;
   line-height: 1.8;
   color: var(--color-gray);
 }
 
-.visuallyHidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-
 @media (max-width: 599px) {
-  .tradeTable tbody th {
-    width: auto;
-    white-space: normal;
-  }
-
-  .tradeTable th,
-  .tradeTable td {
-    padding: 0.75rem 0.5rem;
+  .tradeRow {
+    grid-template-columns: 8rem 1fr;
+    gap: 0.75rem;
   }
 }

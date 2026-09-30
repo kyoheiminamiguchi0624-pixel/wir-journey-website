@@ -57,7 +57,7 @@ export const products = [
     servings: null,
     // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
     retailPrice: "556円",
-    retailLot: "24本",
+    retailLot: "24本（混載対象外 ※2）",
     businessPrice: null,
     businessLot: null,
     status: "available",

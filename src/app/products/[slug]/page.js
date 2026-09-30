@@ -9,6 +9,39 @@ import { PRIMARY_CTA } from "@/lib/constants";
 import { buildMetadata, productJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import styles from "./product.module.css";
 
+// お取引条件(希望小売価格・最小発注数・送料・販促用POP)。ボトル・パウチそれぞれの
+// 希釈比率の下に、NEWS記事のRTD仕様と同じ罫線リスト形式で表示する。
+function TradeSpecs({ price, lot, notes }) {
+  if (!price) return null;
+  return (
+    <>
+      <dl className={styles.tradeSpecs}>
+        <div className={styles.tradeRow}>
+          <dt>希望小売価格（税抜）</dt>
+          <dd>{price}</dd>
+        </div>
+        <div className={styles.tradeRow}>
+          <dt>最小発注数</dt>
+          <dd>{lot}</dd>
+        </div>
+        <div className={styles.tradeRow}>
+          <dt>送料</dt>
+          <dd>{TRADE_NOTES.shippingLabel}</dd>
+        </div>
+        <div className={styles.tradeRow}>
+          <dt>販促用POP</dt>
+          <dd>{TRADE_NOTES.popLabel}</dd>
+        </div>
+      </dl>
+      <ul className={styles.tradeNotes}>
+        {notes.map((note) => (
+          <li key={note}>{note}</li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
 }
@@ -143,6 +176,11 @@ export default async function ProductDetailPage({ params }) {
                     <p className={styles.text}>{product.howToServe}</p>
                   </>
                 )}
+                <TradeSpecs
+                  price={product.retailPrice}
+                  lot={product.retailLot}
+                  notes={TRADE_NOTES.notes}
+                />
               </>
             ) : product.prelaunchNote ? (
               <p className={styles.text}>{product.prelaunchNote}</p>
@@ -202,62 +240,12 @@ export default async function ProductDetailPage({ params }) {
                   ))}
                 </>
               )}
+              <TradeSpecs
+                price={product.businessPrice}
+                lot={product.businessLot}
+                notes={TRADE_NOTES.notes.filter((note) => !note.startsWith("※2"))}
+              />
             </div>
-          </div>
-        </Section>
-      )}
-
-      {product.retailPrice && (
-        <Section>
-          <div className={styles.trade}>
-            <p className={styles.eyebrowBusiness}>TERMS</p>
-            <h2 className={styles.tradeHeading}>お取引条件</h2>
-            <div className={styles.tradeTableWrap}>
-              <table className={styles.tradeTable}>
-                <thead>
-                  <tr>
-                    <th scope="col">
-                      <span className={styles.visuallyHidden}>項目</span>
-                    </th>
-                    <th scope="col">
-                      小売用ボトル
-                      <span className={styles.tradeSize}>{product.retailSize}</span>
-                    </th>
-                    {product.businessPrice && (
-                      <th scope="col">
-                        業務用パウチ
-                        <span className={styles.tradeSize}>1,000ml</span>
-                      </th>
-                    )}
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">希望小売価格（税抜）</th>
-                    <td>{product.retailPrice}</td>
-                    {product.businessPrice && <td>{product.businessPrice}</td>}
-                  </tr>
-                  <tr>
-                    <th scope="row">最小発注数</th>
-                    <td>{product.retailLot}</td>
-                    {product.businessPrice && <td>{product.businessLot}</td>}
-                  </tr>
-                  <tr>
-                    <th scope="row">送料</th>
-                    <td colSpan={product.businessPrice ? 2 : 1}>{TRADE_NOTES.shippingLabel}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">販促用POP</th>
-                    <td colSpan={product.businessPrice ? 2 : 1}>{TRADE_NOTES.popLabel}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <ul className={styles.tradeNotes}>
-              {TRADE_NOTES.notes.map((note) => (
-                <li key={note}>{note}</li>
-              ))}
-            </ul>
           </div>
         </Section>
       )}
