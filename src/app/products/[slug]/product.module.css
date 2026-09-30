@@ -59,7 +59,17 @@
 
 .imageBox {
   flex: 1 1 300px;
-  max-width: 380px;
+  max-width: 420px;
+}
+
+/* 写真と本文が横並びになる幅では、本文(仕様・お取引条件)のほうが縦に長くなるため、
+   写真をスクロールに追従させて、本文を読み進めても写真が横に見え続けるようにする。
+   top はヘッダー(sticky)の高さ分をあけた位置。 */
+@media (min-width: 768px) {
+  .imageBox {
+    position: sticky;
+    top: 7rem;
+  }
 }
 
 .detailBody {
