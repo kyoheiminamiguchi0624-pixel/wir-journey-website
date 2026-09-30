@@ -167,3 +167,48 @@
   background: oklch(88% 0.02 65);
   border-color: oklch(88% 0.02 65);
 }
+
+/* 会社概要(ABOUT US下部)。罫線のみのシンプルな定義リストで、カードUIは使わない。 */
+.companyBlock {
+  text-align: center;
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--color-border);
+}
+
+.companyList {
+  margin: 0;
+  text-align: left;
+  border-top: 1px solid var(--color-border);
+}
+
+.companyRow {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1.5rem;
+  padding: 1.1rem 0.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.companyLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.companyValue {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--color-charcoal);
+}
+
+.companyLine {
+  display: block;
+}
+
+@media (max-width: 599px) {
+  .companyRow {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}
