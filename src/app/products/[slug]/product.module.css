@@ -81,6 +81,18 @@
   margin: 0 0 1.25rem;
 }
 
+/* 推奨希釈比率(牛乳・豆乳・炭酸水など複数行)は行間を空けずに続けて表示する */
+.dilution {
+  margin: 0 0 1.25rem;
+}
+
+.dilution p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--color-charcoal);
+  margin: 0;
+}
+
 .ingredients {
   font-size: 13.5px;
   line-height: 1.8;
@@ -162,4 +174,60 @@
 .ctaButton:hover {
   background: oklch(88% 0.02 65);
   border-color: oklch(88% 0.02 65);
+}
+
+/* お取引条件(希望小売価格・最小発注数・送料・販促用POP)。「写真＋本文」の下に横幅いっぱいで、
+   「項目名 内容」を横1列に並べる(幅が足りない場合は折り返す)。 */
+.trade {
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+}
+
+/* 4項目を横幅いっぱいに均等に配置する(スマホは2列×2段) */
+.tradeSpecs {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.6rem 2rem;
+  margin: 0;
+  padding: 1rem clamp(0.5rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 14px;
+}
+
+.tradeItem {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.tradeItem dt {
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.tradeItem dd {
+  margin: 0;
+  color: var(--color-charcoal);
+}
+
+.tradeNotes {
+  list-style: none;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--color-gray);
+}
+
+@media (max-width: 767px) {
+  .tradeSpecs {
+    grid-template-columns: repeat(2, auto);
+    justify-content: start;
+    gap: 0.6rem 2rem;
+    padding-inline: 0.25rem;
+  }
 }

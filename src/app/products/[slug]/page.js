@@ -4,10 +4,39 @@ import { Section } from "@/components/ui/Section";
 import { PhotoFrame } from "@/components/ui/PhotoFrame";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { products, getProductBySlug } from "@/lib/data/products";
+import { products, getProductBySlug, TRADE_NOTES } from "@/lib/data/products";
 import { PRIMARY_CTA } from "@/lib/constants";
 import { buildMetadata, productJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import styles from "./product.module.css";
+
+// お取引条件(希望小売価格・最小発注数・送料・販促用POP)。ボトル・パウチそれぞれの
+// 「写真＋本文」の下に、「項目名 内容」を横1列に4項目並べて表示し、その下に注記を置く。
+function TradeSpecs({ price, lot, notes, priceLabel = "希望小売価格（税抜）" }) {
+  if (!price) return null;
+  const items = [
+    { label: priceLabel, value: price },
+    { label: "最小発注数", value: lot },
+    { label: "送料", value: TRADE_NOTES.shippingLabel },
+    { label: "販促用POP", value: TRADE_NOTES.popLabel },
+  ];
+  return (
+    <div className={styles.trade}>
+      <dl className={styles.tradeSpecs}>
+        {items.map((item) => (
+          <div key={item.label} className={styles.tradeItem}>
+            <dt>{item.label}</dt>
+            <dd>{item.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <ul className={styles.tradeNotes}>
+        {notes.map((note) => (
+          <li key={note}>{note}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -130,11 +159,11 @@ export default async function ProductDetailPage({ params }) {
                 {product.dilution && (
                   <>
                     <p className={styles.label}>推奨希釈比率</p>
-                    {product.dilution.map((line) => (
-                      <p key={line} className={styles.text}>
-                        {line}
-                      </p>
-                    ))}
+                    <div className={styles.dilution}>
+                      {product.dilution.map((line) => (
+                        <p key={line}>{line}</p>
+                      ))}
+                    </div>
                   </>
                 )}
                 {product.howToServe && (
@@ -157,6 +186,9 @@ export default async function ProductDetailPage({ params }) {
             )}
           </div>
         </div>
+        {product.features && (
+          <TradeSpecs price={product.retailPrice} lot={product.retailLot} notes={TRADE_NOTES.notes} />
+        )}
       </Section>
 
       {product.businessNote && (
@@ -195,15 +227,21 @@ export default async function ProductDetailPage({ params }) {
               {product.dilution && (
                 <>
                   <p className={styles.label}>推奨希釈比率</p>
-                  {product.dilution.map((line) => (
-                    <p key={line} className={styles.text}>
-                      {line}
-                    </p>
-                  ))}
+                  <div className={styles.dilution}>
+                    {product.dilution.map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </div>
                 </>
               )}
             </div>
           </div>
+          <TradeSpecs
+            price={product.businessPrice}
+            lot={product.businessLot}
+            priceLabel="標準販売価格（税抜）"
+            notes={TRADE_NOTES.pouchNotes}
+          />
         </Section>
       )}
 
