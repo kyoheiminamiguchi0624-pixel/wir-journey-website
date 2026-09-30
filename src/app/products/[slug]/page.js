@@ -10,7 +10,7 @@ import { buildMetadata, productJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import styles from "./product.module.css";
 
 // お取引条件(希望小売価格・最小発注数・送料・販促用POP)。ボトル・パウチそれぞれの
-// 希釈比率の下に、NEWS記事のRTD仕様と同じ罫線リスト形式で表示する。
+// 「写真＋本文」の2カラムの下に、横幅いっぱいの1列で、NEWS記事のRTD仕様と同じ罫線リスト形式で表示する。
 function TradeSpecs({ price, lot, notes }) {
   if (!price) return null;
   return (
@@ -176,11 +176,6 @@ export default async function ProductDetailPage({ params }) {
                     <p className={styles.text}>{product.howToServe}</p>
                   </>
                 )}
-                <TradeSpecs
-                  price={product.retailPrice}
-                  lot={product.retailLot}
-                  notes={TRADE_NOTES.notes}
-                />
               </>
             ) : product.prelaunchNote ? (
               <p className={styles.text}>{product.prelaunchNote}</p>
@@ -195,6 +190,9 @@ export default async function ProductDetailPage({ params }) {
             )}
           </div>
         </div>
+        {product.features && (
+          <TradeSpecs price={product.retailPrice} lot={product.retailLot} notes={TRADE_NOTES.notes} />
+        )}
       </Section>
 
       {product.businessNote && (
@@ -240,13 +238,13 @@ export default async function ProductDetailPage({ params }) {
                   ))}
                 </>
               )}
-              <TradeSpecs
-                price={product.businessPrice}
-                lot={product.businessLot}
-                notes={TRADE_NOTES.notes.filter((note) => !note.startsWith("※2"))}
-              />
             </div>
           </div>
+          <TradeSpecs
+            price={product.businessPrice}
+            lot={product.businessLot}
+            notes={TRADE_NOTES.notes.filter((note) => !note.startsWith("※2"))}
+          />
         </Section>
       )}
 

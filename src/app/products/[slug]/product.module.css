@@ -59,17 +59,7 @@
 
 .imageBox {
   flex: 1 1 300px;
-  max-width: 420px;
-}
-
-/* 写真と本文が横並びになる幅では、本文(仕様・お取引条件)のほうが縦に長くなるため、
-   写真をスクロールに追従させて、本文を読み進めても写真が横に見え続けるようにする。
-   top はヘッダー(sticky)の高さ分をあけた位置。 */
-@media (min-width: 768px) {
-  .imageBox {
-    position: sticky;
-    top: 7rem;
-  }
+  max-width: 380px;
 }
 
 .detailBody {
@@ -174,10 +164,10 @@
   border-color: oklch(88% 0.02 65);
 }
 
-/* お取引条件(希望小売価格・最小発注数・送料・販促用POP)。希釈比率の下に置く罫線リスト
-   (NEWS記事のRTD仕様と同じ見た目)。 */
+/* お取引条件(希望小売価格・最小発注数・送料・販促用POP)。「写真＋本文」の下に横幅いっぱいで
+   置く罫線リスト(NEWS記事のRTD仕様と同じ見た目)。 */
 .tradeSpecs {
-  margin: 1.5rem 0 0;
+  margin: clamp(2rem, 4vw, 2.75rem) 0 0;
   border-top: 1px solid var(--color-border);
 }
 
