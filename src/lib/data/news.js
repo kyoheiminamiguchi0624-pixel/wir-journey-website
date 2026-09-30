@@ -47,14 +47,13 @@ export const news = [
         shipping: "10月13日〜",
         body: "京都・宇治田原にある株式会社協栄製茶のコラボ商品です。自家焙煎された茶葉を使ったラテベースで、番茶の薫香とスパイスが好相性です。",
         image: `${IMG}/kyobancha-craft-latte.webp`,
-        productHref: "/products/kyobancha-craft-chai",
+        productHref: "/products/kyobancha-craft-latte",
       },
       {
         name: "京ホップクラフトソーダ",
         shipping: "10月13日〜",
         body: "京都・合同会社WOWとのコラボ商品。中京区役所の屋上など京都市内で栽培された朝摘みホップを使い、ノンアルソーダ飲料を作りました。",
         image: `${IMG}/kyo-hop-craft-soda.webp`,
-        // 商品ページは「新商品情報の追加」タスクで作成予定(それまではリンク先が404になる)
         productHref: "/products/kyo-hop-craft-soda",
       },
     ],

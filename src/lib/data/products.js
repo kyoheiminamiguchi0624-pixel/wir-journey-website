@@ -2,6 +2,11 @@
 // docs/handoff/pages/Product-*.dc.html（完成版Claude Design）の記載をそのまま転記しています。
 // 要約・再解釈・改変・言い換えはしないでください。「一杯」等の表現もhandoff記載のまま維持します。
 // description(Draft 0.8確定原稿)はSEO/メタデータ用途としてそのまま維持しています。
+// 2026年10月発売の4商品(京檸檬クラフトコーラ RTD／京都ダーティーチャイ／京バンチャクラフトラテ／
+// 京ホップクラフトソーダ)は、プロジェクト資料「商品マスタ_2026年度_商品詳細シート」と
+// 「新商品リリースのご案内(2026年10月)」を出典とし、記載のない項目は推測で補わない。
+// recommend: 「おすすめの飲み方・用途」(商品マスタのセールスポイント欄より)。
+// businessImage: null の場合、業務用パウチの写真は「画像準備中」表示になる。
 
 // 業務用パウチ共通文言(docs/handoff/pages/Product-*-Business.dc.html、4ページで一字一句共通)。
 const BUSINESS_NOTE = [
@@ -12,36 +17,49 @@ const BUSINESS_NOTE = [
 const BUSINESS_TAGLINE = "飲食店様向け業務用パウチ（1,000ml）";
 const SHELF_LIFE = "製造日より一年";
 const STORAGE = "常温（開封後は10度以下で保存）";
+// 商品マスタ記載の保存方法(2026年10月発売商品用)。
+const STORAGE_UNOPENED = "未開封時常温保存";
+// 京都 スパイスノチャイと同じ希釈比率(ダーティーチャイ・バンチャラテも同じ、南口様確認済み)。
+const CHAI_DILUTION = [
+  "シロップ1:牛乳=1:8、または1:9（9または10倍希釈）",
+  "シロップ1:豆乳=1:5、または1:6（6または7倍希釈）",
+  "シロップ1:炭酸水=1:6、または1:7（7または8倍希釈）",
+];
 
 export const products = [
   {
     slug: "kyo-remon-craft-cola",
     series: "rtd",
     seriesLabel: "RTD",
-    name: "京檸檬クラフトコーラ",
+    name: "京檸檬クラフトコーラ RTD",
     // 一覧ページ(/products)の容量表記「炭酸飲料・250ml」に使用(RTDはシロップではなく炭酸飲料のため)。
     format: "炭酸飲料",
     retailSize: "250ml",
     businessSize: null,
-    shelfLife: null,
-    storage: null,
+    shelfLife: "製造日より9ヶ月",
+    storage: STORAGE_UNOPENED,
     dilution: null,
     servings: null,
-    status: "coming-soon",
+    status: "available",
     featuredProduct: true,
     description:
-      "京都で育った「京檸檬」を使った、Wir Journeyのクラフトコーラ。京檸檬の個性とスパイスの奥行きを活かし、ボトルからそのまま提供できるRTDタイプに仕上げています。ホテルの宴会やラウンジ、レストランなど、サービスの中で手軽に提供できるノンアルコールドリンクとして、新しい選択肢を提案します。現在、発売に向けて準備中です。",
+      "京都で育った「京檸檬」を使った、Wir Journey初のRTDタイプのクラフトコーラ。京檸檬果汁にスパイスを掛け合わせ、栓を開けてそのまま楽しめる250mlの飲み切りやすいボトル型炭酸飲料です。割る手間がなく、冷やして開けるだけで飲めるため、小売店・観光施設・イベントでの物販に最適です。",
     specNote: null,
     imageAlt: null,
-    // docs/handoff/pages/Product-KyoRemonCraftCola.dc.html準拠(小売用ボトル、発売前の簡略ページ)。
-    tagline: "小売用ボトル",
-    features: null,
+    // 商品一覧(/products)では業務用カードがないため、横長の写真を2カラム分の幅で表示する。
+    listImage: "/images/products/product-kyo-remon-craft-cola-list.webp",
+    listImageRatio: "1562 / 1007",
+    // 出典: 新商品リリース(2026年10月)・商品マスタ。RTDは無添加ではないため「無添加」表記は入れない。
+    tagline: "すぐ飲める、炭酸充填済みタイプ",
+    features:
+      "京檸檬は、京田辺や久御山などで栽培されるブランド檸檬。冬が訪れる前に早摘みされ、控えめな酸味と瑞々しい香り、上品な苦味が特徴のグリーンレモンです。京檸檬果汁にスパイスを掛け合わせ、栓を開けてそのまま楽しめる250mlの飲み切りやすいボトル型炭酸飲料です。",
     taste: null,
+    recommend: "割る手間がなく、冷やして開けるだけで飲めるため、小売店・観光施設・イベントでの物販に最適です。",
+    howToServe: "希釈不要。冷やして開けるだけでお召し上がりいただけます。",
     ingredients: null,
     businessTagline: null,
     businessNote: null,
-    prelaunchNote:
-      "2026年10月の発売を予定しています。商品仕様や販売開始時期などの詳細は、追ってご案内いたします。",
+    prelaunchNote: null,
   },
   {
     slug: "kyo-remon-craft-sparkling",
@@ -129,6 +147,37 @@ export const products = [
     prelaunchNote: null,
   },
   {
+    slug: "kyo-hop-craft-soda",
+    series: "cola",
+    seriesLabel: "クラフトコーラ",
+    name: "京ホップクラフトソーダ",
+    format: "シロップ",
+    retailSize: "250ml",
+    businessSize: "1Lパウチ",
+    shelfLife: SHELF_LIFE,
+    storage: STORAGE_UNOPENED,
+    dilution: ["シロップ1:炭酸水=1:7（8倍希釈）"],
+    servings: "約30杯以上",
+    status: "available",
+    featuredProduct: false,
+    description:
+      "エビバデ京ホップ（合同会社WOW）とのコラボ商品。中京区役所の屋上など京都市内で栽培された朝摘みホップを使った、IPAのような華やかな香りと程よい苦味・甘味のノンアルコールのクラフトソーダ。炭酸水で割るだけで提供できます。",
+    specNote: null,
+    imageAlt: null,
+    // 出典: 新商品リリース(2026年10月)・商品マスタ。小売用写真はリリース資料から切り出した暫定画像。
+    businessImage: null,
+    tagline: "エビバデ京ホップ（合同会社WOW）とのコラボレーション商品",
+    features:
+      "京都・合同会社WOWとのコラボ商品。中京区役所の屋上など京都市内で栽培された朝摘みホップを使い、ノンアルソーダ飲料を作りました。",
+    taste: "IPAのような華やかな香りのあとに、程よい苦味と甘味が続くノンアルコールのクラフトソーダです。",
+    recommend: "炭酸水で割ってグラスで。お酒を飲まない方にも、特別感のある大人の一杯を。1本で約6〜8杯分。",
+    howToServe: null,
+    ingredients: null,
+    businessTagline: BUSINESS_TAGLINE,
+    businessNote: BUSINESS_NOTE,
+    prelaunchNote: null,
+  },
+  {
     slug: "kyoto-spice-no-chai",
     series: "chai",
     seriesLabel: "クラフトチャイ",
@@ -171,50 +220,60 @@ export const products = [
     format: "シロップ",
     retailSize: "250ml",
     businessSize: "1Lパウチ",
-    shelfLife: null,
-    storage: null,
-    dilution: null,
-    servings: null,
-    status: "coming-soon",
+    shelfLife: SHELF_LIFE,
+    storage: STORAGE_UNOPENED,
+    dilution: CHAI_DILUTION,
+    servings: "約30杯以上",
+    status: "available",
     featuredProduct: false,
     description:
-      "クラフトチャイの新たな楽しみ方を提案する、Wir Journeyの新商品。チャイをベースに、より個性的なドリンク体験を提案します。現在、発売に向けて準備中です。",
-    specNote: "詳細仕様は発売時に更新。",
+      "明治35年創業の株式会社美濃与が開発した、大豆を焙煎してつくる「大豆珈琲」を使った、完全ノンカフェインのコーヒーチャイ。牛乳や豆乳で割るだけで、時間を問わず、カフェインを控えながら楽しめるチャイに。",
+    specNote: null,
     imageAlt: null,
-    // docs/handoff/にはこの商品の詳細ページが存在しないため、tagline以下は未確定(推測で補完しない)。
-    tagline: null,
-    features: null,
+    // 業務用パウチの写真は未着(既存画像は「COMING SOON」の仮画像だったため使わない)。
+    businessImage: null,
+    // 出典: 新商品リリース(2026年10月)・商品マスタ。
+    tagline: "株式会社美濃与とのコラボレーション商品",
+    features:
+      "明治35年創業株式会社美濃与が開発した大豆を焙煎してつくる\"大豆珈琲\"を使い、完全ノンカフェインのコーヒーチャイを商品化致しました。大豆珈琲を焙煎する時に発生する大豆微粉末のアップサイクル素材を活かしています。",
     taste: null,
+    recommend: "牛乳や豆乳で割るだけで、時間を問わず、カフェインを控えながら楽しめるチャイに。1本で約6〜8杯分。",
+    howToServe: null,
     ingredients: null,
-    businessTagline: null,
-    businessNote: null,
+    businessTagline: BUSINESS_TAGLINE,
+    businessNote: BUSINESS_NOTE,
     prelaunchNote: null,
   },
   {
-    slug: "kyobancha-craft-chai",
+    slug: "kyobancha-craft-latte",
     series: "chai",
     seriesLabel: "クラフトチャイ",
-    name: "京番茶 クラフトチャイ",
+    name: "京バンチャクラフトラテ",
     format: "シロップ",
     retailSize: "250ml",
     businessSize: "1Lパウチ",
-    shelfLife: null,
-    storage: null,
-    dilution: null,
-    servings: null,
-    status: "coming-soon",
+    shelfLife: SHELF_LIFE,
+    storage: STORAGE_UNOPENED,
+    dilution: CHAI_DILUTION,
+    servings: "約30杯以上",
+    status: "available",
     featuredProduct: false,
     description:
-      "京都の茶文化とクラフトチャイを掛け合わせた、新しいクラフトドリンク。京番茶ならではの個性とチャイのスパイスを組み合わせ、京都ならではのドリンク体験を提案します。現在、発売に向けて準備中です。",
-    specNote: "詳細仕様は発売時に更新。",
+      "京都・宇治田原にある株式会社協栄製茶とのコラボ商品。自家焙煎された京番茶の茶葉を使ったラテベースで、京番茶のスモーキーで香ばしい香りとスパイスが好相性です。牛乳や豆乳で割るだけで、京都らしい一杯に。",
+    specNote: null,
     imageAlt: null,
-    // docs/handoff/にはこの商品の詳細ページが存在しないため、tagline以下は未確定(推測で補完しない)。
-    tagline: null,
-    features: null,
-    taste: null,
+    // 業務用パウチの写真は未着(既存画像は「COMING SOON」の仮画像だったため使わない)。
+    businessImage: null,
+    // 出典: 新商品リリース(2026年10月)・商品マスタ。旧名称「京番茶 クラフトチャイ」(旧URL /products/kyobancha-craft-chai はnext.config.mjsでリダイレクト)。
+    tagline: "株式会社協栄製茶とのコラボレーション商品",
+    features:
+      "京都・宇治田原にある株式会社協栄製茶のコラボ商品です。自家焙煎された茶葉を使ったラテベースで、番茶の薫香とスパイスが好相性です。",
+    taste: "京都で日常的に親しまれてきた京番茶の、スモーキーで香ばしい香りを活かしたクラフトラテです。",
+    recommend: "牛乳や豆乳で割るだけで、京都らしい一杯に。1本で約6〜8杯分。",
+    howToServe: null,
     ingredients: null,
-    businessTagline: null,
-    businessNote: null,
+    businessTagline: BUSINESS_TAGLINE,
+    businessNote: BUSINESS_NOTE,
     prelaunchNote: null,
   },
 ];

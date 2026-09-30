@@ -7,9 +7,9 @@ import styles from "./ProductsOverview.module.css";
 // HOME PRODUCTSセクション専用のシリーズ単位コピーとして扱う)。
 const seriesContent = {
   rtd: {
-    desc: "京檸檬を使ったボトルタイプのクラフトコーラ。開栓してそのまま提供できます。現在、発売に向けて準備中です。",
+    desc: "京檸檬を使ったボトルタイプのクラフトコーラ。開栓してそのまま提供できます。",
     image: "/images/home/product-0.webp",
-    imageAlt: "京檸檬クラフトコーラの商品写真",
+    imageAlt: "京檸檬クラフトコーラ RTDの商品写真",
   },
   sparkling: {
     desc: "食事に合わせやすい、澄んだ味わいのスパークリング。乾杯やペアリングの選択肢として。",

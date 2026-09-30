@@ -31,14 +31,16 @@ export const metadata = buildMetadata({
 
 // docs/handoff/pages/Products.dc.html 100-127行目準拠。retailSlotId/businessSlotIdは
 // public/images/products/配下のファイル名(IMAGE_FILES_MANIFEST.md準拠)と一致させている。
+// 業務用がない商品(RTD)は、listImageの横長写真を2カラム分の幅で表示する。
 function RetailCard({ product }) {
+  const wide = Boolean(product.listImage);
   return (
-    <div className={styles.productCard}>
+    <div className={wide ? `${styles.productCard} ${styles.productCardWide}` : styles.productCard}>
       <div className={styles.cardMedia}>
         <PhotoFrame
-          src={`/images/products/product-${product.slug}-retail.webp`}
+          src={product.listImage ?? `/images/products/product-${product.slug}-retail.webp`}
           alt={`${product.name}（小売用）の商品写真`}
-          ratio="4 / 5"
+          ratio={product.listImageRatio ?? "4 / 5"}
         />
       </div>
       <div className={styles.cardText}>
@@ -61,8 +63,8 @@ function BusinessCard({ product }) {
     <div className={`${styles.productCard} ${styles.productCardBusiness}`}>
       <div className={styles.cardMedia}>
         <PhotoFrame
-          src={`/images/products/product-${product.slug}-business.webp`}
-          alt={`${product.name}（業務用）の商品写真`}
+          src={product.businessImage === null ? undefined : `/images/products/product-${product.slug}-business.webp`}
+          alt={product.businessImage === null ? "画像準備中" : `${product.name}（業務用）の商品写真`}
           ratio="4 / 5"
         />
       </div>

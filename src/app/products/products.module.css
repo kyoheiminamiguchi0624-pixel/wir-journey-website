@@ -148,6 +148,11 @@
     flex: 1 1 0;
     max-width: 420px;
   }
+
+  /* 業務用がない商品(RTD)の横長カードは、2カラム分の幅いっぱいに表示する */
+  .cardRow > .productCardWide {
+    max-width: none;
+  }
 }
 
 .productCard {
