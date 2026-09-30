@@ -13,7 +13,8 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const contactHref = isHome ? "#contact" : PRIMARY_CTA.href;
+  // ヘッダーのCTAはTOPでもページ内スクロールせず、お問い合わせページへ直接遷移する。
+  const contactHref = PRIMARY_CTA.href;
 
   function resolveHref(link) {
     return isHome && link.anchorOnHome ? link.anchorOnHome : link.href;

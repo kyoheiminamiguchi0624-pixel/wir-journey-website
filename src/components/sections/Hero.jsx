@@ -29,7 +29,7 @@ export function Hero() {
             ホテル・レストラン・カフェ・小売店様へ、無添加・無着色のドリンクをお届けしています。
           </p>
           <div className={styles.ctaRow}>
-            <a href="#contact" className={styles.ctaPrimary}>
+            <a href={PRIMARY_CTA.href} className={styles.ctaPrimary}>
               {PRIMARY_CTA.label}
             </a>
             <a href="#products" className={styles.ctaSecondary}>
