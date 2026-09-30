@@ -10,35 +10,31 @@ import { buildMetadata, productJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import styles from "./product.module.css";
 
 // お取引条件(希望小売価格・最小発注数・送料・販促用POP)。ボトル・パウチそれぞれの
-// 「写真＋本文」の2カラムの下に、横幅いっぱいの1列で、NEWS記事のRTD仕様と同じ罫線リスト形式で表示する。
+// 「写真＋本文」の下に、「項目名 内容」を横1列に4項目並べて表示し、その下に注記を置く。
 function TradeSpecs({ price, lot, notes }) {
   if (!price) return null;
+  const items = [
+    { label: "希望小売価格（税抜）", value: price },
+    { label: "最小発注数", value: lot },
+    { label: "送料", value: TRADE_NOTES.shippingLabel },
+    { label: "販促用POP", value: TRADE_NOTES.popLabel },
+  ];
   return (
-    <>
+    <div className={styles.trade}>
       <dl className={styles.tradeSpecs}>
-        <div className={styles.tradeRow}>
-          <dt>希望小売価格（税抜）</dt>
-          <dd>{price}</dd>
-        </div>
-        <div className={styles.tradeRow}>
-          <dt>最小発注数</dt>
-          <dd>{lot}</dd>
-        </div>
-        <div className={styles.tradeRow}>
-          <dt>送料</dt>
-          <dd>{TRADE_NOTES.shippingLabel}</dd>
-        </div>
-        <div className={styles.tradeRow}>
-          <dt>販促用POP</dt>
-          <dd>{TRADE_NOTES.popLabel}</dd>
-        </div>
+        {items.map((item) => (
+          <div key={item.label} className={styles.tradeItem}>
+            <dt>{item.label}</dt>
+            <dd>{item.value}</dd>
+          </div>
+        ))}
       </dl>
       <ul className={styles.tradeNotes}>
         {notes.map((note) => (
-          <li key={note}>{note}</li>
+          <li key={note.text}>{note.text}</li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 
@@ -243,7 +239,7 @@ export default async function ProductDetailPage({ params }) {
           <TradeSpecs
             price={product.businessPrice}
             lot={product.businessLot}
-            notes={TRADE_NOTES.notes.filter((note) => !note.startsWith("※2"))}
+            notes={TRADE_NOTES.notes.filter((note) => note.for === "all")}
           />
         </Section>
       )}

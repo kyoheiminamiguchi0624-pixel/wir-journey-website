@@ -164,28 +164,36 @@
   border-color: oklch(88% 0.02 65);
 }
 
-/* お取引条件(希望小売価格・最小発注数・送料・販促用POP)。「写真＋本文」の下に横幅いっぱいで
-   置く罫線リスト(NEWS記事のRTD仕様と同じ見た目)。 */
-.tradeSpecs {
-  margin: clamp(2rem, 4vw, 2.75rem) 0 0;
-  border-top: 1px solid var(--color-border);
+/* お取引条件(希望小売価格・最小発注数・送料・販促用POP)。「写真＋本文」の下に横幅いっぱいで、
+   「項目名 内容」を横1列に並べる(幅が足りない場合は折り返す)。 */
+.trade {
+  margin-top: clamp(2rem, 4vw, 2.75rem);
 }
 
-.tradeRow {
-  display: grid;
-  grid-template-columns: 10rem 1fr;
-  gap: 1rem;
-  padding: 0.75rem 0.25rem;
+.tradeSpecs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem 2.5rem;
+  margin: 0;
+  padding: 1rem 0.25rem;
+  border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   font-size: 14px;
 }
 
-.tradeRow dt {
+.tradeItem {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.tradeItem dt {
   font-weight: 700;
   color: var(--color-black);
 }
 
-.tradeRow dd {
+.tradeItem dd {
   margin: 0;
   color: var(--color-charcoal);
 }
@@ -202,8 +210,7 @@
 }
 
 @media (max-width: 599px) {
-  .tradeRow {
-    grid-template-columns: 8rem 1fr;
-    gap: 0.75rem;
+  .tradeSpecs {
+    gap: 0.5rem 1.5rem;
   }
 }

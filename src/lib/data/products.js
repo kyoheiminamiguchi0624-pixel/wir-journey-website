@@ -22,17 +22,18 @@ const STORAGE_UNOPENED = "未開封時常温保存";
 // お取引条件(商品詳細ページ下部に表示)。出典: 商品マスタ_2026年度_商品詳細シート。
 // 希望小売価格は本体価格(税抜)。卸価格・粗利率はWebに掲載しない。
 export const TRADE_NOTES = {
-  shippingLabel: "送料無料（条件あり ※1）",
-  popLabel: "あり（※3）",
+  shippingLabel: "送料無料",
+  popLabel: "あり",
+  // for: "retail"(小売用ボトルのみ) / "all"(ボトル・パウチ両方)
   notes: [
-    "※1 送料無料の条件：京檸檬クラフトコーラRTDは72本以上、その他の商品は1回のご発注で16,500円（税抜）以上",
-    "※2 ロットの混載：シロップタイプのボトルは6本以上から、他のシロップタイプSKUと混載可能（RTDは混載対象外）",
-    "※3 販促用のフライヤー・宣材データもご用意しています",
+    { for: "all", text: "送料無料の条件：京檸檬クラフトコーラRTDは72本以上、その他の商品は1回のご発注で16,500円（税抜）以上" },
+    { for: "retail", text: "ロットの混載：シロップタイプのボトルは6本以上から、他のシロップタイプSKUと混載可能（RTDは混載対象外）" },
+    { for: "all", text: "販促用のフライヤー・宣材データもご用意しています" },
   ],
 };
 // 業務用パウチ・シロップボトル共通の最小発注数(商品マスタの納品ロット)
 const POUCH_LOT = "1袋";
-const BOTTLE_LOT = "6本（混載可 ※2）";
+const BOTTLE_LOT = "6本";
 
 // 京都 スパイスノチャイと同じ希釈比率(ダーティーチャイ・バンチャラテも同じ、南口様確認済み)。
 const CHAI_DILUTION = [
@@ -57,7 +58,7 @@ export const products = [
     servings: null,
     // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
     retailPrice: "556円",
-    retailLot: "24本（混載対象外 ※2）",
+    retailLot: "24本",
     businessPrice: null,
     businessLot: null,
     status: "available",
