@@ -108,8 +108,6 @@ export default async function ProductDetailPage({ params }) {
                     <p className={styles.specValue}>{product.storage}</p>
                   </div>
                 </div>
-                <p className={styles.label}>原材料</p>
-                <p className={styles.ingredients}>{product.ingredients}</p>
                 <p className={styles.label}>推奨希釈比率</p>
                 {product.dilution.map((line) => (
                   <p key={line} className={styles.text}>
