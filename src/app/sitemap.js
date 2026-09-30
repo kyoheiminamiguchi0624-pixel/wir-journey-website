@@ -1,5 +1,6 @@
 import { SITE } from "@/lib/constants";
 import { products } from "@/lib/data/products";
+import { news } from "@/lib/data/news";
 
 const staticPaths = [
   "/",
@@ -9,6 +10,7 @@ const staticPaths = [
   "/about",
   "/oem",
   "/faq",
+  "/news",
   "/contact",
 ];
 
@@ -21,5 +23,10 @@ export default function sitemap() {
     url: `${SITE.url}/products/${product.slug}`,
   }));
 
-  return [...staticEntries, ...productEntries];
+  const newsEntries = news.map((item) => ({
+    url: `${SITE.url}/news/${item.slug}`,
+    lastModified: item.date,
+  }));
+
+  return [...staticEntries, ...productEntries, ...newsEntries];
 }

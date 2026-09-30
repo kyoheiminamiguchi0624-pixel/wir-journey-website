@@ -1,0 +1,262 @@
+.header {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.date {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--color-gray);
+}
+
+.category {
+  font-size: 11px;
+  padding: 0.1rem 0.6rem;
+  border: 1px solid var(--color-border);
+  color: var(--color-charcoal);
+}
+
+.title {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-serif-jp);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.8;
+  color: var(--color-gray);
+  margin: 1rem 0 0;
+}
+
+/* リード文はタイトルと同じセクション内に置き、見出し直下に続けて表示する */
+.lead {
+  max-width: 760px;
+  margin: clamp(2rem, 4vw, 2.75rem) auto 0;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--color-charcoal);
+}
+
+/* メイン商品(写真+本文の2カラム、モバイルは縦積み) */
+.main {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: flex-start;
+}
+
+.mainImage {
+  flex: 1 1 300px;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.mainBody {
+  flex: 1 1 380px;
+}
+
+.mainLabel {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-white);
+  background: var(--color-cta);
+  padding: 0.3rem 0.9rem;
+  margin: 0 0 1rem;
+}
+
+.mainName {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  line-height: 1.5;
+  margin: 0 0 0.5rem;
+}
+
+.mainCatch {
+  font-size: 15px;
+  color: var(--color-accent);
+  margin: 0 0 1.5rem;
+}
+
+.text {
+  font-size: 15px;
+  line-height: 1.95;
+  color: var(--color-charcoal);
+  margin: 0 0 1rem;
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.tag {
+  font-size: 13px;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--color-border);
+  color: var(--color-charcoal);
+}
+
+.specs {
+  margin: 0 0 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1rem;
+  padding: 0.75rem 0.25rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 14px;
+}
+
+.specRow dt {
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.specRow dd {
+  margin: 0;
+  color: var(--color-charcoal);
+}
+
+.textLink {
+  font-size: 14px;
+  color: var(--color-black);
+  text-underline-offset: 3px;
+}
+
+/* 「商品詳細を見る」は押しやすい枠付きボタンにする(スマホでは横幅いっぱい) */
+.detailButton {
+  min-width: 13rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 14px;
+  background: var(--color-white);
+}
+
+@media (max-width: 599px) {
+  .detailButton {
+    width: 100%;
+  }
+}
+
+/* コラボ商品 */
+.sectionHeading {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  line-height: 1.6;
+  text-align: center;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+}
+
+.collabGrid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 2.5rem);
+}
+
+@media (min-width: 900px) {
+  .collabGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.collabName {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin: 1.1rem 0 0.4rem;
+}
+
+.collabShipping {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin: 0 0 0.75rem;
+}
+
+.collabText {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--color-charcoal);
+  margin: 0 0 1.25rem;
+}
+
+/* サンプル案内CTA */
+.cta {
+  text-align: center;
+}
+
+.ctaHeading {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  margin: 0 0 0.75rem;
+}
+
+.ctaText {
+  font-size: 15px;
+  margin: 0 0 2rem;
+}
+
+.ctaButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.ctaButton {
+  background: var(--color-white);
+  color: var(--color-cta);
+  border-color: var(--color-white);
+}
+
+.ctaButtonOutline {
+  background: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.back {
+  text-align: center;
+}
+
+/* コラボ商品カードは説明文の長さが違っても、ボタンの位置を下端で揃える */
+.collabItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.collabItem .detailButton {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+@media (max-width: 599px) {
+  .collabItem .detailButton {
+    align-self: stretch;
+  }
+}

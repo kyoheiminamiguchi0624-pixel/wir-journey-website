@@ -1,0 +1,152 @@
+/* ヒーロー直下のNEWS帯。濃いアイボリーの帯の上に白い囲み枠を置き、
+   「お知らせが載っている場所」だと一目で分かるようにする。 */
+.strip {
+  background: var(--color-surface-deep);
+  border-bottom: 1px solid var(--color-border);
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+.box {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: oklch(99% 0.006 75);
+  border: 1px solid var(--color-border);
+  padding: 1.25rem clamp(1.25rem, 3vw, 2.25rem);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem 2rem;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0;
+  padding-right: 2rem;
+  border-right: 1px solid var(--color-border);
+}
+
+.headingEn {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  color: var(--color-black);
+}
+
+.headingJa {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list li + li {
+  border-top: 1px dashed var(--color-border);
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  color: var(--color-black);
+  text-decoration: none;
+}
+
+.item:hover .title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.date {
+  flex-shrink: 0;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--color-gray);
+}
+
+.category {
+  flex-shrink: 0;
+  font-size: 11px;
+  padding: 0.1rem 0.6rem;
+  background: var(--color-cta);
+  color: var(--color-white);
+}
+
+.title {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.more {
+  font-size: 13px;
+  color: var(--color-black);
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-black);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.more:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+@media (max-width: 767px) {
+  .box {
+    grid-template-columns: 1fr auto;
+    padding: 1rem 1.1rem;
+    gap: 0.75rem;
+  }
+
+  .heading {
+    grid-column: 1;
+    grid-row: 1;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .headingEn {
+    font-size: 19px;
+  }
+
+  .more {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    padding: 0.35rem 0.75rem;
+    font-size: 12px;
+  }
+
+  .list {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* スマホは最新2件のみ表示(高さを抑えるため) */
+  .list li:nth-child(n + 3) {
+    display: none;
+  }
+
+  .item {
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+  }
+
+  .title {
+    flex-basis: 100%;
+  }
+}

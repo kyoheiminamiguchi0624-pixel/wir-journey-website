@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
+import { NewsStrip } from "@/components/sections/NewsStrip";
 import { PainPoints } from "@/components/sections/PainPoints";
 import { WhyWirJourney } from "@/components/sections/WhyWirJourney";
 import { StoreVoices } from "@/components/sections/StoreVoices";
@@ -24,6 +25,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <NewsStrip />
       <PainPoints />
       <WhyWirJourney />
       {SHOW_HOME_CASE_STUDIES && <StoreVoices />}
