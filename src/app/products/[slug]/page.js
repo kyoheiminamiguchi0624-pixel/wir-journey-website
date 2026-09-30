@@ -81,7 +81,7 @@ export default async function ProductDetailPage({ params }) {
         {product.tagline && <p className={styles.tagline}>{product.tagline}</p>}
       </Section>
 
-      <Section>
+      <Section className={styles.detailSection}>
         <div className={styles.detail}>
           <div className={styles.imageBox}>
             <PhotoFrame

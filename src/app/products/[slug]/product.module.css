@@ -29,6 +29,13 @@
    より上端を詰める。他ページのSection・下部の業務用セクションには影響しない。 */
 .heroSection {
   padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  padding-bottom: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+/* タイトル(Hero)直下の商品写真・本文ブロック。Hero下端と合わせて余白が
+   二重に大きくならないよう、上端だけサイト共通のSection余白より詰める。 */
+.detailSection {
+  padding-top: clamp(1rem, 2.5vw, 1.75rem);
 }
 
 .tagline {
