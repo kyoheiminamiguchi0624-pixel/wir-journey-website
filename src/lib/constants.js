@@ -19,6 +19,7 @@ export const NAV_LINKS = [
   { href: "/about", label: "ABOUT US" },
   { href: "/oem", label: "OEM" },
   { href: "/faq", label: "FAQ" },
+  { href: "/news", label: "NEWS" },
 ];
 
 // docs/handoff/pages/Home.dc.html記載のFooterリンク構成(349-355行目)。
@@ -27,6 +28,7 @@ export const FOOTER_LINKS = [
   { href: "/about", label: "私たちについて" },
   { href: "/oem", label: "OEM" },
   { href: "/faq", label: "よくある質問" },
+  { href: "/news", label: "お知らせ" },
   { href: "/contact", label: "お問い合わせ" },
 ];
 
