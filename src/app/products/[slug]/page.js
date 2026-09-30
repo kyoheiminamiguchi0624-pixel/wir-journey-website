@@ -31,7 +31,7 @@ function TradeSpecs({ price, lot, notes }) {
       </dl>
       <ul className={styles.tradeNotes}>
         {notes.map((note) => (
-          <li key={note.text}>{note.text}</li>
+          <li key={note}>{note}</li>
         ))}
       </ul>
     </div>
@@ -239,7 +239,7 @@ export default async function ProductDetailPage({ params }) {
           <TradeSpecs
             price={product.businessPrice}
             lot={product.businessLot}
-            notes={TRADE_NOTES.notes.filter((note) => note.for === "all")}
+            notes={TRADE_NOTES.notes}
           />
         </Section>
       )}
