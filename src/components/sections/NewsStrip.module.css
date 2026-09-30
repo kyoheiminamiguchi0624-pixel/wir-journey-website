@@ -6,10 +6,12 @@
   padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 4vw, 3rem);
 }
 
-/* PCは「見出し＋一覧を見る」と「ニュース一覧」の2カラム。タイトルの長さに対して
-   右側に余白が出すぎないよう、枠の最大幅をタイトル1行分程度に抑える。 */
+/* PCは「見出し＋一覧を見る」と「ニュース一覧」の2カラム。枠の幅を内容(最も長い
+   タイトル)に合わせて自動で決め、右側に余白が出すぎないようにする。
+   タイトルが長い場合は最大1100pxまで広がり、それ以上は折り返す。 */
 .box {
-  max-width: 860px;
+  width: fit-content;
+  max-width: min(1100px, 100%);
   margin: 0 auto;
   background: oklch(99% 0.006 75);
   border: 1px solid var(--color-border);
@@ -113,6 +115,7 @@
 
 @media (max-width: 767px) {
   .box {
+    width: auto;
     grid-template-columns: 1fr;
     padding: 1rem 1.1rem;
     gap: 0.75rem;
