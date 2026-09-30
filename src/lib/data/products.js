@@ -19,6 +19,21 @@ const SHELF_LIFE = "製造日より一年";
 const STORAGE = "常温（開封後は10度以下で保存）";
 // 商品マスタ記載の保存方法(2026年10月発売商品用)。
 const STORAGE_UNOPENED = "未開封時常温保存";
+// お取引条件(商品詳細ページ下部に表示)。出典: 商品マスタ_2026年度_商品詳細シート。
+// 希望小売価格は本体価格(税抜)。卸価格・粗利率はWebに掲載しない。
+export const TRADE_NOTES = {
+  shippingLabel: "送料無料（条件あり ※1）",
+  popLabel: "あり（※3）",
+  notes: [
+    "※1 送料無料の条件：京檸檬クラフトコーラRTDは72本以上、その他の商品は1回のご発注で16,500円（税抜）以上",
+    "※2 ロットの混載：シロップタイプのボトルは6本以上から、他のシロップタイプSKUと混載可能（RTDは混載対象外）",
+    "※3 販促用のフライヤー・宣材データもご用意しています",
+  ],
+};
+// 業務用パウチ・シロップボトル共通の最小発注数(商品マスタの納品ロット)
+const POUCH_LOT = "1袋";
+const BOTTLE_LOT = "6本（混載可 ※2）";
+
 // 京都 スパイスノチャイと同じ希釈比率(ダーティーチャイ・バンチャラテも同じ、南口様確認済み)。
 const CHAI_DILUTION = [
   "シロップ1:牛乳=1:8、または1:9（9または10倍希釈）",
@@ -40,6 +55,11 @@ export const products = [
     storage: STORAGE_UNOPENED,
     dilution: null,
     servings: null,
+    // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
+    retailPrice: "556円",
+    retailLot: "24本",
+    businessPrice: null,
+    businessLot: null,
     status: "available",
     featuredProduct: true,
     description:
@@ -73,6 +93,11 @@ export const products = [
     storage: STORAGE,
     dilution: ["シロップ1:炭酸水=1:6、または1:7（7または8倍希釈）"],
     servings: "約30杯以上",
+    // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
+    retailPrice: "5,500円",
+    retailLot: BOTTLE_LOT,
+    businessPrice: "6,500円",
+    businessLot: POUCH_LOT,
     status: "available",
     featuredProduct: false,
     description:
@@ -101,6 +126,11 @@ export const products = [
     storage: STORAGE,
     dilution: ["シロップ1:炭酸水=1:4、または1:5（5または6倍希釈）"],
     servings: "約30杯以上",
+    // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
+    retailPrice: "2,315円",
+    retailLot: BOTTLE_LOT,
+    businessPrice: "5,500円",
+    businessLot: POUCH_LOT,
     status: "available",
     featuredProduct: false,
     description:
@@ -129,6 +159,11 @@ export const products = [
     storage: STORAGE,
     dilution: ["シロップ1:炭酸水=1:4、または1:5（5または6倍希釈）"],
     servings: "約30杯以上",
+    // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
+    retailPrice: "2,315円",
+    retailLot: BOTTLE_LOT,
+    businessPrice: "5,500円",
+    businessLot: POUCH_LOT,
     status: "available",
     featuredProduct: false,
     description:
@@ -158,6 +193,11 @@ export const products = [
     storage: STORAGE_UNOPENED,
     dilution: ["シロップ1:炭酸水=1:7（8倍希釈）"],
     servings: "約30杯以上",
+    // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
+    retailPrice: "2,315円",
+    retailLot: BOTTLE_LOT,
+    businessPrice: "5,500円",
+    businessLot: POUCH_LOT,
     status: "available",
     featuredProduct: false,
     description:
@@ -194,6 +234,11 @@ export const products = [
       "シロップ1:炭酸水=1:6、または1:7（7または8倍希釈）",
     ],
     servings: "約30杯以上",
+    // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
+    retailPrice: "2,315円",
+    retailLot: BOTTLE_LOT,
+    businessPrice: "5,500円",
+    businessLot: POUCH_LOT,
     status: "available",
     featuredProduct: false,
     description:
@@ -224,6 +269,11 @@ export const products = [
     storage: STORAGE_UNOPENED,
     dilution: CHAI_DILUTION,
     servings: "約30杯以上",
+    // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
+    retailPrice: "2,315円",
+    retailLot: BOTTLE_LOT,
+    businessPrice: "5,500円",
+    businessLot: POUCH_LOT,
     status: "available",
     featuredProduct: false,
     description:
@@ -256,6 +306,11 @@ export const products = [
     storage: STORAGE_UNOPENED,
     dilution: CHAI_DILUTION,
     servings: "約30杯以上",
+    // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
+    retailPrice: "2,315円",
+    retailLot: BOTTLE_LOT,
+    businessPrice: "5,500円",
+    businessLot: POUCH_LOT,
     status: "available",
     featuredProduct: false,
     description:
