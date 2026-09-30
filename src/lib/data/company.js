@@ -9,5 +9,5 @@ export const companyProfile = [
   { label: "代表者", value: "南口 友里子" },
   { label: "設立", value: "2022年4月" },
   { label: "事業内容", value: "京都クラフトドリンクメーカーWir Journeyの運営" },
-  { label: "取引銀行", value: ["京都信用金庫", "京都中央信用金庫", "近畿産業信用組合"] },
+  { label: "取引銀行", value: "京都信用金庫・京都中央信用金庫・近畿産業信用組合" },
 ];
