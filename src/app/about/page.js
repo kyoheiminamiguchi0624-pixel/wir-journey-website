@@ -105,13 +105,6 @@ export default function AboutPage() {
           <div className={styles.foundersImage}>
             <PhotoFrame src="/images/about/about-founders-photo.webp" alt="Wir Journeyを運営する夫婦の写真" ratio="3 / 2" />
           </div>
-        </div>
-      </Section>
-
-      <Section narrow>
-        <div className={styles.companyBlock}>
-          <p className={styles.eyebrow}>COMPANY</p>
-          <h2 className={styles.sectionHeading}>会社概要</h2>
           <dl className={styles.companyList}>
             {companyProfile
               .filter((row) => (Array.isArray(row.value) ? row.value.length > 0 : row.value))

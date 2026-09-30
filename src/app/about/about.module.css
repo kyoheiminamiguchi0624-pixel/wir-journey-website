@@ -63,7 +63,7 @@
 }
 
 .storyBody {
-  max-width: 760px;
+  max-width: 600px; /* 写真(.foundersImage)の最大幅に揃える */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -168,15 +168,10 @@
   border-color: oklch(88% 0.02 65);
 }
 
-/* 会社概要(ABOUT US下部)。罫線のみのシンプルな定義リストで、カードUIは使わない。 */
-.companyBlock {
-  text-align: center;
-  padding-top: clamp(2.5rem, 5vw, 3.5rem);
-  border-top: 1px solid var(--color-border);
-}
-
+/* 会社概要(ABOUT US下部、夫婦写真の直下)。罫線のみのシンプルな定義リストで、カードUIは使わない。 */
 .companyList {
-  margin: 0;
+  max-width: 600px; /* 写真(.foundersImage)の最大幅に揃える */
+  margin: clamp(2.5rem, 4vw, 3.25rem) auto 0;
   text-align: left;
   border-top: 1px solid var(--color-border);
 }
