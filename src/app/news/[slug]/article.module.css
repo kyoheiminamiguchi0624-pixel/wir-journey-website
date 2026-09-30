@@ -41,11 +41,13 @@
   margin: 1rem 0 0;
 }
 
+/* リード文はタイトルと同じセクション内に置き、見出し直下に続けて表示する */
 .lead {
+  max-width: 760px;
+  margin: clamp(2rem, 4vw, 2.75rem) auto 0;
   font-size: 15px;
   line-height: 2;
   color: var(--color-charcoal);
-  margin: 0;
 }
 
 /* メイン商品(写真+本文の2カラム、モバイルは縦積み) */
@@ -146,6 +148,20 @@
   text-underline-offset: 3px;
 }
 
+/* 「商品詳細を見る」は押しやすい枠付きボタンにする(スマホでは横幅いっぱい) */
+.detailButton {
+  min-width: 13rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 14px;
+  background: var(--color-white);
+}
+
+@media (max-width: 599px) {
+  .detailButton {
+    width: 100%;
+  }
+}
+
 /* コラボ商品 */
 .sectionHeading {
   font-family: var(--font-serif-jp);
@@ -185,7 +201,7 @@
   font-size: 14px;
   line-height: 1.9;
   color: var(--color-charcoal);
-  margin: 0 0 0.75rem;
+  margin: 0 0 1.25rem;
 }
 
 /* サンプル案内CTA */
@@ -226,4 +242,21 @@
 
 .back {
   text-align: center;
+}
+
+/* コラボ商品カードは説明文の長さが違っても、ボタンの位置を下端で揃える */
+.collabItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.collabItem .detailButton {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+@media (max-width: 599px) {
+  .collabItem .detailButton {
+    align-self: stretch;
+  }
 }

@@ -65,9 +65,6 @@ export default async function NewsArticlePage({ params }) {
           <h1 className={styles.title}>{item.title}</h1>
           {item.subtitle && <p className={styles.subtitle}>{item.subtitle}</p>}
         </header>
-      </Section>
-
-      <Section narrow>
         <p className={styles.lead}>{item.lead}</p>
       </Section>
 
@@ -102,9 +99,9 @@ export default async function NewsArticlePage({ params }) {
                 ))}
               </dl>
               {main.productHref && (
-                <Link href={main.productHref} className={styles.textLink}>
-                  商品詳細を見る
-                </Link>
+                <Button href={main.productHref} variant="outline" className={styles.detailButton}>
+                  商品詳細を見る<span aria-hidden="true">　›</span>
+                </Button>
               )}
             </div>
           </div>
@@ -122,9 +119,9 @@ export default async function NewsArticlePage({ params }) {
                 <p className={styles.collabShipping}>発送可能開始日　{product.shipping}</p>
                 <p className={styles.collabText}>{product.body}</p>
                 {product.productHref && (
-                  <Link href={product.productHref} className={styles.textLink}>
-                    商品詳細を見る
-                  </Link>
+                  <Button href={product.productHref} variant="outline" className={styles.detailButton}>
+                    商品詳細を見る<span aria-hidden="true">　›</span>
+                  </Button>
                 )}
               </article>
             ))}
