@@ -227,6 +227,8 @@ export const products = [
       "明治35年創業の株式会社美濃与が開発した、大豆を焙煎してつくる「大豆珈琲」を使った、完全ノンカフェインのコーヒーチャイ。牛乳や豆乳で割るだけで、時間を問わず、カフェインを控えながら楽しめるチャイに。",
     specNote: null,
     imageAlt: null,
+    // 業務用パウチの写真は未着(既存画像は「COMING SOON」の仮画像だったため使わない)。
+    businessImage: null,
     // 出典: 新商品リリース(2026年10月)・商品マスタ。
     tagline: "株式会社美濃与とのコラボレーション商品",
     features:
@@ -257,6 +259,8 @@ export const products = [
       "京都・宇治田原にある株式会社協栄製茶とのコラボ商品。自家焙煎された京番茶の茶葉を使ったラテベースで、京番茶のスモーキーで香ばしい香りとスパイスが好相性です。牛乳や豆乳で割るだけで、京都らしい一杯に。",
     specNote: null,
     imageAlt: null,
+    // 業務用パウチの写真は未着(既存画像は「COMING SOON」の仮画像だったため使わない)。
+    businessImage: null,
     // 出典: 新商品リリース(2026年10月)・商品マスタ。旧名称「京番茶 クラフトチャイ」(旧URL /products/kyobancha-craft-chai はnext.config.mjsでリダイレクト)。
     tagline: "株式会社協栄製茶とのコラボレーション商品",
     features:
