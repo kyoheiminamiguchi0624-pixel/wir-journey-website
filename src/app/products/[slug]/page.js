@@ -21,7 +21,7 @@ export function generateStaticParams() {
 // (kyoto-dirty-chaiは元のdescriptionが既に全角90文字以内のため未掲載)。
 const PRODUCT_META_DESCRIPTIONS = {
   "kyo-remon-craft-cola":
-    "京都育ちの京檸檬を使ったクラフトコーラ。ボトルからそのまま提供できるRTDタイプで、ホテル・レストラン向けの新しいノンアルコールドリンクです。発売に向け準備中。",
+    "京檸檬を使ったWir Journey初のRTDクラフトコーラ。割らずに冷やして開けるだけで飲める250mlボトルで、小売店・観光施設・イベントでの物販に。",
   "kyo-remon-craft-sparkling":
     "京都育ちの京檸檬を使った、食事に合うクラフトスパークリング。炭酸水で割るノンアルコールドリンクで、ホテル・レストランのメニューやウェルカムドリンクに。",
   "kyoto-ringo-no-cola":
@@ -30,8 +30,10 @@ const PRODUCT_META_DESCRIPTIONS = {
     "ジンジャーとスパイスの風味を楽しむクラフトコーラ。炭酸水で割るほか、アレンジドリンクにも。カフェやレストラン、バーに取り入れやすいシロップです。",
   "kyoto-spice-no-chai":
     "アッサム茶葉とスパイスのクラフトチャイ。ミルクで割るチャイラテが定番で、アレンジドリンクにも。カフェやホテルラウンジ向けの新しいドリンクメニューに。",
-  "kyobancha-craft-chai":
-    "京都の茶文化とクラフトチャイを掛け合わせた新しいドリンク。京番茶ならではの個性とチャイのスパイスを組み合わせています。発売に向け準備中。",
+  "kyobancha-craft-latte":
+    "協栄製茶とのコラボ商品。京番茶のスモーキーで香ばしい香りを活かしたクラフトラテのシロップ。牛乳や豆乳で割るだけで、京都らしいカフェメニューに。",
+  "kyo-hop-craft-soda":
+    "エビバデ京ホップ（合同会社WOW）とのコラボ商品。京都市内で栽培されたホップを使った、華やかな香りのノンアルコールクラフトソーダのシロップ。",
 };
 
 export async function generateMetadata({ params }) {
@@ -54,7 +56,8 @@ export default async function ProductDetailPage({ params }) {
   if (!product) notFound();
 
   const retailImage = `/images/products/product-${product.slug}-retail.webp`;
-  const businessImage = `/images/products/product-${product.slug}-business.webp`;
+  // businessImage: null の商品は業務用パウチの写真が未着のため「画像準備中」表示にする。
+  const businessImage = product.businessImage === null ? undefined : `/images/products/product-${product.slug}-business.webp`;
 
   return (
     <>
@@ -82,7 +85,7 @@ export default async function ProductDetailPage({ params }) {
         <div className={styles.detail}>
           <div className={styles.imageBox}>
             <PhotoFrame
-              src={product.tagline ? retailImage : undefined}
+              src={product.status === "available" ? retailImage : undefined}
               alt={`${product.name}（小売用）の商品写真`}
               ratio="4 / 5"
             />
@@ -92,8 +95,18 @@ export default async function ProductDetailPage({ params }) {
               <>
                 <p className={styles.label}>特徴</p>
                 <p className={styles.text}>{product.features}</p>
-                <p className={styles.label}>味わい</p>
-                <p className={styles.text}>{product.taste}</p>
+                {product.taste && (
+                  <>
+                    <p className={styles.label}>味わい</p>
+                    <p className={styles.text}>{product.taste}</p>
+                  </>
+                )}
+                {product.recommend && (
+                  <>
+                    <p className={styles.label}>おすすめの飲み方・用途</p>
+                    <p className={styles.text}>{product.recommend}</p>
+                  </>
+                )}
                 <div className={styles.specGrid}>
                   <div className={styles.specCard}>
                     <p className={styles.specLabel}>内容量</p>
@@ -108,14 +121,28 @@ export default async function ProductDetailPage({ params }) {
                     <p className={styles.specValue}>{product.storage}</p>
                   </div>
                 </div>
-                <p className={styles.label}>原材料</p>
-                <p className={styles.ingredients}>{product.ingredients}</p>
-                <p className={styles.label}>推奨希釈比率</p>
-                {product.dilution.map((line) => (
-                  <p key={line} className={styles.text}>
-                    {line}
-                  </p>
-                ))}
+                {product.ingredients && (
+                  <>
+                    <p className={styles.label}>原材料</p>
+                    <p className={styles.ingredients}>{product.ingredients}</p>
+                  </>
+                )}
+                {product.dilution && (
+                  <>
+                    <p className={styles.label}>推奨希釈比率</p>
+                    {product.dilution.map((line) => (
+                      <p key={line} className={styles.text}>
+                        {line}
+                      </p>
+                    ))}
+                  </>
+                )}
+                {product.howToServe && (
+                  <>
+                    <p className={styles.label}>飲み方</p>
+                    <p className={styles.text}>{product.howToServe}</p>
+                  </>
+                )}
               </>
             ) : product.prelaunchNote ? (
               <p className={styles.text}>{product.prelaunchNote}</p>
@@ -139,7 +166,11 @@ export default async function ProductDetailPage({ params }) {
           {product.businessTagline && <p className={styles.tagline}>{product.businessTagline}</p>}
           <div className={styles.detail}>
             <div className={styles.imageBox}>
-              <PhotoFrame src={businessImage} alt={`${product.name}（業務用）の商品写真`} ratio="4 / 5" />
+              <PhotoFrame
+                src={businessImage}
+                alt={businessImage ? `${product.name}（業務用）の商品写真` : "画像準備中"}
+                ratio="4 / 5"
+              />
             </div>
             <div className={styles.detailBody}>
               {product.businessNote.map((paragraph) => (
@@ -161,12 +192,16 @@ export default async function ProductDetailPage({ params }) {
                   <p className={styles.specValue}>{product.storage}</p>
                 </div>
               </div>
-              <p className={styles.label}>推奨希釈比率</p>
-              {product.dilution.map((line) => (
-                <p key={line} className={styles.text}>
-                  {line}
-                </p>
-              ))}
+              {product.dilution && (
+                <>
+                  <p className={styles.label}>推奨希釈比率</p>
+                  {product.dilution.map((line) => (
+                    <p key={line} className={styles.text}>
+                      {line}
+                    </p>
+                  ))}
+                </>
+              )}
             </div>
           </div>
         </Section>

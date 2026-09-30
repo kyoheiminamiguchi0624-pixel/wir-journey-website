@@ -61,8 +61,8 @@ function BusinessCard({ product }) {
     <div className={`${styles.productCard} ${styles.productCardBusiness}`}>
       <div className={styles.cardMedia}>
         <PhotoFrame
-          src={`/images/products/product-${product.slug}-business.webp`}
-          alt={`${product.name}（業務用）の商品写真`}
+          src={product.businessImage === null ? undefined : `/images/products/product-${product.slug}-business.webp`}
+          alt={product.businessImage === null ? "画像準備中" : `${product.name}（業務用）の商品写真`}
           ratio="4 / 5"
         />
       </div>
