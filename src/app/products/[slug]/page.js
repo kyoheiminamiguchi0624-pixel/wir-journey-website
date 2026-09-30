@@ -159,11 +159,11 @@ export default async function ProductDetailPage({ params }) {
                 {product.dilution && (
                   <>
                     <p className={styles.label}>推奨希釈比率</p>
-                    {product.dilution.map((line) => (
-                      <p key={line} className={styles.text}>
-                        {line}
-                      </p>
-                    ))}
+                    <div className={styles.dilution}>
+                      {product.dilution.map((line) => (
+                        <p key={line}>{line}</p>
+                      ))}
+                    </div>
                   </>
                 )}
                 {product.howToServe && (
@@ -227,11 +227,11 @@ export default async function ProductDetailPage({ params }) {
               {product.dilution && (
                 <>
                   <p className={styles.label}>推奨希釈比率</p>
-                  {product.dilution.map((line) => (
-                    <p key={line} className={styles.text}>
-                      {line}
-                    </p>
-                  ))}
+                  <div className={styles.dilution}>
+                    {product.dilution.map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </div>
                 </>
               )}
             </div>
