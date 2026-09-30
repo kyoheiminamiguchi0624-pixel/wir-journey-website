@@ -240,7 +240,7 @@ export default async function ProductDetailPage({ params }) {
             price={product.businessPrice}
             lot={product.businessLot}
             priceLabel="標準販売価格（税抜）"
-            notes={TRADE_NOTES.notes.filter((note) => !note.startsWith("※2"))}
+            notes={TRADE_NOTES.pouchNotes}
           />
         </Section>
       )}
