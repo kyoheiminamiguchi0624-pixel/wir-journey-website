@@ -10,9 +10,10 @@ export function NewsStrip() {
 
   return (
     <section className={styles.strip} aria-labelledby="home-news-heading">
-      <div className={styles.inner}>
+      <div className={styles.box}>
         <h2 id="home-news-heading" className={styles.heading}>
-          NEWS
+          <span className={styles.headingEn}>NEWS</span>
+          <span className={styles.headingJa}>お知らせ</span>
         </h2>
         <ul className={styles.list}>
           {latest.map((item) => (
@@ -28,7 +29,7 @@ export function NewsStrip() {
           ))}
         </ul>
         <Link href="/news" className={styles.more}>
-          一覧を見る
+          一覧を見る<span aria-hidden="true"> ›</span>
         </Link>
       </div>
     </section>
