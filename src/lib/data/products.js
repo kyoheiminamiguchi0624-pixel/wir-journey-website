@@ -46,6 +46,9 @@ export const products = [
       "京都で育った「京檸檬」を使った、Wir Journey初のRTDタイプのクラフトコーラ。京檸檬果汁にスパイスを掛け合わせ、栓を開けてそのまま楽しめる250mlの飲み切りやすいボトル型炭酸飲料です。割る手間がなく、冷やして開けるだけで飲めるため、小売店・観光施設・イベントでの物販に最適です。",
     specNote: null,
     imageAlt: null,
+    // 商品一覧(/products)では業務用カードがないため、横長の写真を2カラム分の幅で表示する。
+    listImage: "/images/products/product-kyo-remon-craft-cola-list.webp",
+    listImageRatio: "1562 / 1007",
     // 出典: 新商品リリース(2026年10月)・商品マスタ。RTDは無添加ではないため「無添加」表記は入れない。
     tagline: "すぐ飲める、炭酸充填済みタイプ",
     features:
