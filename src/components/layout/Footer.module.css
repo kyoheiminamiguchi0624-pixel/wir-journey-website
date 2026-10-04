@@ -120,10 +120,25 @@
   border-radius: 4px;
 }
 
+.bottomRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  border-top: 1px solid var(--color-gray-light);
+  padding-top: 1.5rem;
+}
+
+.policyLink {
+  font-size: 12px;
+  color: oklch(50% 0.02 55);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .copyright {
   font-size: 12px;
   color: oklch(58% 0.02 55);
-  border-top: 1px solid var(--color-gray-light);
-  padding-top: 1.5rem;
   margin: 0;
 }

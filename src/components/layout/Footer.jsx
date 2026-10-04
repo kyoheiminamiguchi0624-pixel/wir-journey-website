@@ -75,7 +75,12 @@ export function Footer() {
           </div>
         </div>
 
-        <p className={styles.copyright}>© 2026 Wir Journey. All rights reserved.</p>
+        <div className={styles.bottomRow}>
+          <Link href="/privacy" className={styles.policyLink}>
+            プライバシーポリシー
+          </Link>
+          <p className={styles.copyright}>© 2026 Wir Journey. All rights reserved.</p>
+        </div>
       </Container>
     </footer>
   );

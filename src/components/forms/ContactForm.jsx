@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BUSINESS_TYPES, INQUIRY_TYPES } from "@/lib/constants";
 import styles from "./ContactForm.module.css";
@@ -141,6 +142,14 @@ export function ContactForm() {
         </div>
 
         {submitError && <p className={styles.error}>{submitError}</p>}
+
+        <p className={styles.privacyNote}>
+          送信前に
+          <Link href="/privacy" target="_blank" className={styles.privacyLink}>
+            プライバシーポリシー
+          </Link>
+          をご確認ください。
+        </p>
 
         <div className={styles.submitRow}>
           <button type="submit" className={styles.submit} disabled={submitting}>

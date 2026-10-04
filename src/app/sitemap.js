@@ -12,6 +12,7 @@ const staticPaths = [
   "/faq",
   "/news",
   "/stores",
+  "/privacy",
   "/contact",
 ];
 
