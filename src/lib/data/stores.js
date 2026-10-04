@@ -9,8 +9,13 @@ export const STORES_AS_OF = "2026年10月";
 // 地図の元データ: Google ドライブ「Wir Journey お取り扱い店舗（Webサイト地図用）.kml」(店名・エリア・Google マップへのリンク)。
 // 店舗を追加・削除するときは、マイマップと下のstoreGroupsの両方を更新すること。
 // null にすると地図ブロックは表示されない。
-export const STORE_MAP_EMBED_URL =
-  "https://www.google.com/maps/d/embed?mid=1n8o50kV65GNZxemMLo2SFT73zhB7FT4&hl=ja&ll=35.012%2C135.77&z=12";
+const STORE_MAP_BASE =
+  "https://www.google.com/maps/d/embed?mid=1n8o50kV65GNZxemMLo2SFT73zhB7FT4&hl=ja";
+// 初期表示の中心とズーム。PCは京都市内に寄せる(13)。スマホは画面が狭く13では市内の店舗が収まらないため12。
+export const STORE_MAP_EMBED_URL = {
+  pc: `${STORE_MAP_BASE}&ll=35.025%2C135.765&z=13`,
+  sp: `${STORE_MAP_BASE}&ll=35.015%2C135.765&z=12`,
+};
 
 export const storeGroups = [
   {
