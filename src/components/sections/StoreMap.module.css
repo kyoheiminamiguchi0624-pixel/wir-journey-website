@@ -14,7 +14,19 @@
   border: 0;
 }
 
+.sp {
+  display: none;
+}
+
 @media (max-width: 767px) {
+  .pc {
+    display: none;
+  }
+
+  .sp {
+    display: block;
+  }
+
   /* スマホは高さを控えめにして、地図の外でページをスクロールできる余白を残す */
   .frame {
     aspect-ratio: 1 / 1;
