@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { storeVoices } from "@/lib/data/storeVoices";
 import styles from "./StoreVoices.module.css";
 
@@ -36,6 +37,11 @@ export function StoreVoices() {
             </div>
           </div>
         ))}
+        <div className={styles.moreRow}>
+          <Link href="/stores" className={styles.moreLink}>
+            お取り扱い店舗を見る ›
+          </Link>
+        </div>
       </div>
     </section>
   );

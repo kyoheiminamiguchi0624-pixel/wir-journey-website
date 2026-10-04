@@ -81,3 +81,25 @@
   color: oklch(50% 0.02 55);
   margin: 0;
 }
+
+.moreRow {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.moreLink {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  padding: 0.9rem 2.25rem;
+  border: 1px solid var(--color-black);
+  color: var(--color-black);
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.moreLink:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}

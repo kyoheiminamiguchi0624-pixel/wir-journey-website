@@ -1,3 +1,11 @@
+section.heroSection {
+  padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+section.listSection {
+  padding-top: 0;
+}
+
 .hero {
   text-align: center;
 }
