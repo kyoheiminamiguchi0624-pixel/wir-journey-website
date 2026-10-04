@@ -6,7 +6,7 @@ const IMG = "/images/news/2026-10-new-products";
 export const news = [
   {
     slug: "new-products-2026-10",
-    date: "2026-10-01",
+    date: "2026-10-13",
     category: "新商品",
     title: "京都産素材を使った新商品を4種リリース",
     subtitle: "ご待望のRTDタイプ（すぐ飲める炭酸充填済）も正式リリース致します",
