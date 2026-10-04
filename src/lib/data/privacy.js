@@ -104,7 +104,7 @@ export const privacySections = [
     body: ["本ポリシーおよび個人情報の取扱いに関するお問い合わせは、下記までご連絡ください。"],
     items: [
       `${profileValue("会社名")}`,
-      "メールアドレス：【要確認】",
+      "メールアドレス：hobbyworks.0426@gmail.com",
     ],
   },
 ];

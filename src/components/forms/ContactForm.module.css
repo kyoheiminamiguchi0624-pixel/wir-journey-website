@@ -105,6 +105,19 @@
   color: #b3261e;
 }
 
+.privacyNote {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-charcoal);
+  margin: 0.5rem 0 0;
+}
+
+.privacyLink {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .submitRow {
   margin-top: 0.75rem;
 }
