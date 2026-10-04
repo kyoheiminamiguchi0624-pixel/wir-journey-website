@@ -10,7 +10,7 @@ export const STORES_AS_OF = "2026年10月";
 // 店舗を追加・削除するときは、マイマップと下のstoreGroupsの両方を更新すること。
 // null にすると地図ブロックは表示されない。
 export const STORE_MAP_EMBED_URL =
-  "https://www.google.com/maps/d/embed?mid=1n8o50kV65GNZxemMLo2SFT73zhB7FT4&hl=ja&ll=35.012%2C135.77&z=12";
+  "https://www.google.com/maps/d/embed?mid=1n8o50kV65GNZxemMLo2SFT73zhB7FT4&hl=ja&ll=35.022%2C135.765&z=13";
 
 export const storeGroups = [
   {
