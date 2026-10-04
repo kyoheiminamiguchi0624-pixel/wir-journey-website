@@ -1,0 +1,84 @@
+section.heroSection {
+  padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+section.bodySection {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.hero {
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+  margin: 0 0 1.25rem;
+}
+
+.heroTitle {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.85rem, 3.2vw, 2.4rem);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.intro {
+  margin: 0 0 2.5rem;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--color-charcoal);
+}
+
+.block {
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.heading {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.text {
+  margin: 0 0 0.85rem;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--color-charcoal);
+}
+
+.list {
+  margin: 0 0 0.85rem;
+  padding-left: 1.25rem;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--color-charcoal);
+}
+
+.links {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.links a {
+  color: var(--color-accent);
+  text-underline-offset: 3px;
+}
+
+.enacted {
+  margin: 3rem 0 0;
+  font-size: 13px;
+  color: var(--color-gray);
+  text-align: right;
+}
