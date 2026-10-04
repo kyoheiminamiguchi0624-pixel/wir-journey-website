@@ -6,7 +6,7 @@
 export const STORES_AS_OF = "2026年10月";
 
 // Google マイマップ「Wir Journey お取り扱い店舗」(南口様のGoogleアカウント所有)の埋め込みURL。
-// 地図の元データ: Google ドライブ「Wir Journey お取り扱い店舗（Webサイト地図用）」。
+// 地図の元データ: Google ドライブ「Wir Journey お取り扱い店舗（Webサイト地図用）.kml」(店名・エリア・Google マップへのリンク)。
 // 店舗を追加・削除するときは、マイマップと下のstoreGroupsの両方を更新すること。
 // null にすると地図ブロックは表示されない。
 export const STORE_MAP_EMBED_URL =
