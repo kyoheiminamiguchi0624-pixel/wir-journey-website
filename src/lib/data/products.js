@@ -6,7 +6,7 @@
 // 京ホップクラフトソーダ)は、プロジェクト資料「商品マスタ_2026年度_商品詳細シート」と
 // 「新商品リリースのご案内(2026年10月)」を出典とし、記載のない項目は推測で補わない。
 // recommend: 「おすすめの飲み方・用途」(商品マスタのセールスポイント欄より)。
-// businessImage: null の場合、業務用パウチの写真は「画像準備中」表示になる。
+// businessImage: null の場合、業務用パウチの写真は「画像準備中」表示になる(現在は全商品に写真あり)。
 
 // 業務用パウチ共通文言(docs/handoff/pages/Product-*-Business.dc.html、4ページで一字一句共通)。
 const BUSINESS_NOTE = [
@@ -213,7 +213,6 @@ export const products = [
     specNote: null,
     imageAlt: null,
     // 出典: 新商品リリース(2026年10月)・商品マスタ。小売用写真はリリース資料から切り出した暫定画像。
-    businessImage: null,
     tagline: "エビバデ京ホップ（合同会社WOW）とのコラボレーション商品",
     features:
       "京都・合同会社WOWとのコラボ商品。中京区役所の屋上など京都市内で栽培された朝摘みホップを使い、ノンアルソーダ飲料を作りました。",
@@ -288,8 +287,6 @@ export const products = [
       "明治35年創業の株式会社美濃与が開発した、大豆を焙煎してつくる「大豆珈琲」を使った、完全ノンカフェインのコーヒーチャイ。牛乳や豆乳で割るだけで、時間を問わず、カフェインを控えながら楽しめるチャイに。",
     specNote: null,
     imageAlt: null,
-    // 業務用パウチの写真は未着(既存画像は「COMING SOON」の仮画像だったため使わない)。
-    businessImage: null,
     // 出典: 新商品リリース(2026年10月)・商品マスタ。
     tagline: "株式会社美濃与とのコラボレーション商品",
     features:
@@ -325,8 +322,6 @@ export const products = [
       "京都・宇治田原にある株式会社協栄製茶とのコラボ商品。自家焙煎された京番茶の茶葉を使ったラテベースで、京番茶のスモーキーで香ばしい香りとスパイスが好相性です。牛乳や豆乳で割るだけで、京都らしい一杯に。",
     specNote: null,
     imageAlt: null,
-    // 業務用パウチの写真は未着(既存画像は「COMING SOON」の仮画像だったため使わない)。
-    businessImage: null,
     // 出典: 新商品リリース(2026年10月)・商品マスタ。旧名称「京番茶 クラフトチャイ」(旧URL /products/kyobancha-craft-chai はnext.config.mjsでリダイレクト)。
     tagline: "株式会社協栄製茶とのコラボレーション商品",
     features:
