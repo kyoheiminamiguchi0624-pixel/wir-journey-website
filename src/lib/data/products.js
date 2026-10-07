@@ -42,11 +42,17 @@ export const TRADE_NOTES = {
 const POUCH_LOT = "1袋〜";
 const BOTTLE_LOT = "6本〜";
 
-// 京都 スパイスノチャイと同じ希釈比率(ダーティーチャイ・バンチャラテも同じ、南口様確認済み)。
-const CHAI_DILUTION = [
-  "シロップ1:牛乳=1:8、または1:9（9または10倍希釈）",
-  "シロップ1:豆乳=1:5、または1:6（6または7倍希釈）",
+// ダーティーチャイの希釈比率(Notion「Webサイト改善提案」2026-10-07 記載。京都 スパイスノチャイとは別)。
+const DIRTY_CHAI_DILUTION = [
+  "シロップ1:牛乳=1:5、または1:6（6または7倍希釈）",
+  "シロップ1:豆乳=1:4、または1:5（5または6倍希釈）",
   "シロップ1:炭酸水=1:6、または1:7（7または8倍希釈）",
+];
+
+// 京バンチャクラフトラテの希釈比率(同上。番茶は炭酸水割りを案内しない)。
+const BANCHA_LATTE_DILUTION = [
+  "シロップ1:牛乳=1:5、または1:6（6または7倍希釈）",
+  "シロップ1:豆乳=1:4、または1:5（5または6倍希釈）",
 ];
 
 export const products = [
@@ -274,7 +280,7 @@ export const products = [
     businessSize: "1Lパウチ",
     shelfLife: SHELF_LIFE,
     storage: STORAGE_UNOPENED,
-    dilution: CHAI_DILUTION,
+    dilution: DIRTY_CHAI_DILUTION,
     servings: "約30杯以上",
     // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
     retailPrice: "2,315円",
@@ -309,7 +315,7 @@ export const products = [
     businessSize: "1Lパウチ",
     shelfLife: SHELF_LIFE,
     storage: STORAGE_UNOPENED,
-    dilution: CHAI_DILUTION,
+    dilution: BANCHA_LATTE_DILUTION,
     servings: "約30杯以上",
     // お取引条件(商品マスタより)。価格は希望小売価格・本体価格(税抜)。
     retailPrice: "2,315円",
