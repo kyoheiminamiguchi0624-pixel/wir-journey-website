@@ -9,7 +9,7 @@ const NOTIFICATION_FROM = "Wir Journey <info@wirjourney.com>";
 const NOTIFICATION_TO = ["kyohei.minamiguchi0624@gmail.com", "hobbyworks.0426@gmail.com"];
 
 function labelFor(options, value) {
-  return options.find((option) => option.value === value)?.label ?? value ?? "未選択";
+  return options.find((option) => option.value === value)?.label || value || "未選択";
 }
 
 function escapeHtml(value) {

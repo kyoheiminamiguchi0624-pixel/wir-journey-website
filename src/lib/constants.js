@@ -64,11 +64,17 @@ export const INQUIRY_TYPES = [
   { value: "other", label: "その他" },
 ];
 
-// docs/handoff/pages/Contact.dc.html 231-236行目準拠。handoff内コメントに
-// 「デザインラフのため主要業態のみ抜粋」と明記されている簡略版(4択)。
+// 業種の選択肢。CLAUDE.md「2. コアターゲット」の対象範囲に合わせて拡充
+// (handoffは「デザインラフのため主要業態のみ抜粋」の4択だった)。
+// フォームでは先頭に未選択の「選択してください」を別途表示する。
 export const BUSINESS_TYPES = [
-  { value: "restaurant", label: "飲食店" },
-  { value: "hotel", label: "ホテル・宿泊施設" },
+  { value: "hotel", label: "ホテル" },
+  { value: "ryokan", label: "旅館" },
+  { value: "restaurant", label: "レストラン" },
+  { value: "cafe", label: "カフェ" },
+  { value: "bar", label: "バー" },
   { value: "retail", label: "小売店" },
+  { value: "gift", label: "ギフトショップ" },
+  { value: "local", label: "道の駅・地域産品販売施設" },
   { value: "other", label: "その他" },
 ];
