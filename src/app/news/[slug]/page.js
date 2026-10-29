@@ -65,8 +65,39 @@ export default async function NewsArticlePage({ params }) {
           <h1 className={styles.title}>{item.title}</h1>
           {item.subtitle && <p className={styles.subtitle}>{item.subtitle}</p>}
         </header>
-        <p className={styles.lead}>{item.lead}</p>
+        {item.lead && <p className={styles.lead}>{item.lead}</p>}
       </Section>
+
+      {item.notice && (
+        <Section narrow>
+          <div className={styles.notice}>
+            {item.notice.intro.map((para) => (
+              <p key={para} className={styles.text}>
+                {para}
+              </p>
+            ))}
+            {item.notice.sections.map((section) => (
+              <section key={section.heading} className={styles.noticeSection}>
+                <h2 className={styles.noticeHeading}>{section.heading}</h2>
+                {section.body.map((block) =>
+                  Array.isArray(block) ? (
+                    <ul key={block[0]} className={styles.noticeList}>
+                      {block.map((line) => (
+                        <li key={line}>{line}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p key={block} className={styles.text}>
+                      {block}
+                    </p>
+                  ),
+                )}
+              </section>
+            ))}
+            <p className={styles.noticeSignature}>{item.notice.signature}</p>
+          </div>
+        </Section>
+      )}
 
       {main && (
         <Section>
@@ -129,20 +160,22 @@ export default async function NewsArticlePage({ params }) {
         </Section>
       )}
 
-      <Section tone="cta">
-        <div className={styles.cta}>
-          <h2 className={styles.ctaHeading}>{item.sampleHeading}</h2>
-          <p className={styles.ctaText}>{item.sampleText}</p>
-          <div className={styles.ctaButtons}>
-            <Button href={LEAD_CTA.href} className={styles.ctaButton}>
-              {LEAD_CTA.label}
-            </Button>
-            <Button href={PRIMARY_CTA.href} variant="outline" className={styles.ctaButtonOutline}>
-              {PRIMARY_CTA.label}
-            </Button>
+      {item.sampleHeading && (
+        <Section tone="cta">
+          <div className={styles.cta}>
+            <h2 className={styles.ctaHeading}>{item.sampleHeading}</h2>
+            <p className={styles.ctaText}>{item.sampleText}</p>
+            <div className={styles.ctaButtons}>
+              <Button href={LEAD_CTA.href} className={styles.ctaButton}>
+                {LEAD_CTA.label}
+              </Button>
+              <Button href={PRIMARY_CTA.href} variant="outline" className={styles.ctaButtonOutline}>
+                {PRIMARY_CTA.label}
+              </Button>
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      )}
 
       <Section narrow>
         <div className={styles.back}>
