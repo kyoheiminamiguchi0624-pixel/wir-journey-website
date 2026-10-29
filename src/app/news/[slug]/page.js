@@ -9,6 +9,43 @@ import { PRIMARY_CTA, LEAD_CTA, SITE } from "@/lib/constants";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import styles from "./article.module.css";
 
+// 意味のまとまり(phrase)の途中で改行されないよう、inline-blockで包む。
+function Phrases({ parts }) {
+  return parts.map((part, i) => (
+    <span key={i} className={styles.phrase}>
+      {part}
+    </span>
+  ));
+}
+
+// 日付(曜日つき)の途中で改行されないよう、日付部分だけ折り返さない。
+const DATE_PATTERN = /(\d{4}年\d{1,2}月\d{1,2}日（[月火水木金土日]）|\d{1,2}月\d{1,2}日（[月火水木金土日]）|\d{4}年\d{1,2}月\d{1,2}日|\d{1,2}月\d{1,2}日)/;
+function DateText({ text }) {
+  return text.split(DATE_PATTERN).map((part, i) =>
+    i % 2 === 1 ? (
+      <span key={i} className={styles.nowrap}>
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  );
+}
+
+// 「ラベル：日付」の1行を、ラベルと日付に分けて表示する(文言は変えない)。
+function LabeledLine({ line }) {
+  const at = line.indexOf("：");
+  if (at < 0) return <DateText text={line} />;
+  return (
+    <>
+      <span className={styles.noticeLabel}>{line.slice(0, at + 1)}</span>
+      <span className={styles.noticeValue}>
+        <DateText text={line.slice(at + 1)} />
+      </span>
+    </>
+  );
+}
+
 export function generateStaticParams() {
   return news.map((item) => ({ slug: item.slug }));
 }
@@ -62,10 +99,52 @@ export default async function NewsArticlePage({ params }) {
             </time>
             <span className={styles.category}>{item.category}</span>
           </div>
-          <h1 className={styles.title}>{item.title}</h1>
+          <h1 className={styles.title}>{item.titleParts ? <Phrases parts={item.titleParts} /> : item.title}</h1>
           {item.subtitle && <p className={styles.subtitle}>{item.subtitle}</p>}
         </header>
-        <p className={styles.lead}>{item.lead}</p>
+        {item.lead && <p className={styles.lead}>{item.lead}</p>}
+        {item.notice && (
+          <div className={styles.notice}>
+            {item.notice.intro.map((para) => (
+              <p key={para} className={styles.noticeText}>
+                {para}
+              </p>
+            ))}
+            {item.notice.sections.map((section) => (
+              <section key={section.heading.join("")} className={styles.noticeSection}>
+                <h2 className={styles.noticeHeading}>
+                  <Phrases parts={section.heading} />
+                </h2>
+                {section.body.map((block) => {
+                  if (Array.isArray(block)) {
+                    return (
+                      <ul key={block[0]} className={styles.noticeList}>
+                        {block.map((line) => (
+                          <li key={line}>
+                            <LabeledLine line={line} />
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  }
+                  if (typeof block === "object") {
+                    return (
+                      <p key={block.emphasis} className={styles.noticeEmphasis}>
+                        <LabeledLine line={block.emphasis} />
+                      </p>
+                    );
+                  }
+                  return (
+                    <p key={block} className={styles.noticeText}>
+                      <DateText text={block} />
+                    </p>
+                  );
+                })}
+              </section>
+            ))}
+            <p className={styles.noticeSignature}>{item.notice.signature}</p>
+          </div>
+        )}
       </Section>
 
       {main && (
@@ -129,20 +208,22 @@ export default async function NewsArticlePage({ params }) {
         </Section>
       )}
 
-      <Section tone="cta">
-        <div className={styles.cta}>
-          <h2 className={styles.ctaHeading}>{item.sampleHeading}</h2>
-          <p className={styles.ctaText}>{item.sampleText}</p>
-          <div className={styles.ctaButtons}>
-            <Button href={LEAD_CTA.href} className={styles.ctaButton}>
-              {LEAD_CTA.label}
-            </Button>
-            <Button href={PRIMARY_CTA.href} variant="outline" className={styles.ctaButtonOutline}>
-              {PRIMARY_CTA.label}
-            </Button>
+      {item.sampleHeading && (
+        <Section tone="cta">
+          <div className={styles.cta}>
+            <h2 className={styles.ctaHeading}>{item.sampleHeading}</h2>
+            <p className={styles.ctaText}>{item.sampleText}</p>
+            <div className={styles.ctaButtons}>
+              <Button href={LEAD_CTA.href} className={styles.ctaButton}>
+                {LEAD_CTA.label}
+              </Button>
+              <Button href={PRIMARY_CTA.href} variant="outline" className={styles.ctaButtonOutline}>
+                {PRIMARY_CTA.label}
+              </Button>
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      )}
 
       <Section narrow>
         <div className={styles.back}>

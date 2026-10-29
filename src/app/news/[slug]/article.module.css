@@ -260,3 +260,101 @@
     align-self: stretch;
   }
 }
+
+/* 折り返し制御: 意味のまとまり・日付の途中で改行しない */
+.phrase {
+  display: inline-block;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* お知らせ記事(日程などのテキスト中心の本文)。ヘッダーと同じセクション内に続けて表示する */
+.notice {
+  max-width: 720px;
+  margin: clamp(2rem, 4vw, 2.75rem) auto 0;
+}
+
+.noticeText {
+  font-size: 15px;
+  line-height: 2;
+  color: var(--color-charcoal);
+  margin: 0 0 1rem;
+  text-wrap: pretty;
+}
+
+.noticeSection {
+  margin-top: clamp(2.25rem, 5vw, 3rem);
+}
+
+.noticeHeading {
+  font-family: var(--font-serif-jp);
+  font-weight: 500;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.7;
+  margin: 0 0 1.1rem;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--color-accent);
+}
+
+/* 日付など、取引先が最も知りたい行を目立たせる */
+.noticeEmphasis {
+  font-family: var(--font-serif-jp);
+  font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--color-black);
+  margin: 0 0 1rem;
+}
+
+.noticeList {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-deep);
+}
+
+.noticeList li {
+  padding: 0.95rem 1.15rem;
+}
+
+.noticeList li + li {
+  border-top: 1px solid var(--color-border);
+}
+
+.noticeLabel {
+  display: block;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-gray);
+}
+
+.noticeValue {
+  display: block;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--color-black);
+}
+
+.noticeEmphasis .noticeLabel {
+  display: inline;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.noticeEmphasis .noticeValue {
+  display: inline;
+  font-size: inherit;
+}
+
+.noticeSignature {
+  margin: clamp(2.25rem, 5vw, 3rem) 0 0;
+  font-size: 15px;
+  line-height: 1.95;
+  color: var(--color-charcoal);
+  text-align: right;
+}
