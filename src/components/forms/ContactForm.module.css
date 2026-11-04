@@ -166,3 +166,12 @@
 .faqLink a:hover {
   color: var(--color-black);
 }
+
+/* ボット対策の入力欄。画面外に置き、人には見えず・操作もされない。 */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

@@ -1,12 +1,33 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { INQUIRY_TYPES, BUSINESS_TYPES } from "@/lib/constants";
+import { registerInquiryToCrm } from "@/lib/notion-crm";
 
 // docs/handoff/pages/Contact.dc.html準拠。お名前・会社名・店舗名・メールアドレスのみ必須(*付き)。
 const REQUIRED_FIELDS = ["contactName", "companyName", "email"];
 
 const NOTIFICATION_FROM = "Wir Journey <info@wirjourney.com>";
 const NOTIFICATION_TO = ["kyohei.minamiguchi0624@gmail.com", "hobbyworks.0426@gmail.com"];
+// Notion CRMへの登録に失敗したときの通知先。
+const CRM_FAILURE_NOTIFICATION_TO = ["kyohei.minamiguchi0624@gmail.com"];
+
+// スパム対策(ベストエフォート)。サーバーレスのためインスタンスごとのメモリ上で数える。
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const rateLimitHits = new Map();
+
+function isRateLimited(request) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const now = Date.now();
+  const recent = (rateLimitHits.get(ip) ?? []).filter((time) => now - time < RATE_LIMIT_WINDOW_MS);
+  if (recent.length >= RATE_LIMIT_MAX) {
+    rateLimitHits.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  rateLimitHits.set(ip, recent);
+  return false;
+}
 
 function labelFor(options, value) {
   return options.find((option) => option.value === value)?.label ?? value ?? "未選択";
@@ -232,12 +253,40 @@ async function sendAutoReply(resend, data) {
   }
 }
 
+async function sendCrmFailureNotice(resend, receivedAt, reason) {
+  try {
+    await resend.emails.send({
+      from: NOTIFICATION_FROM,
+      to: CRM_FAILURE_NOTIFICATION_TO,
+      subject: "【Wir Journey】Notion CRMへの登録に失敗しました",
+      text: [
+        "問い合わせフォームの内容をNotion CRMへ登録できませんでした。",
+        "お問い合わせの通知メールは届いています。お手数ですが、CRMへの登録は手作業でお願いします。",
+        "",
+        `受信日時: ${receivedAt.toISOString()}`,
+        `エラー内容: ${reason}`,
+      ].join("\n"),
+    });
+  } catch (error) {
+    console.error("[contact] crm failure notice failed", error);
+  }
+}
+
 export async function POST(request) {
   let data;
   try {
     data = await request.json();
   } catch {
     return NextResponse.json({ ok: false, error: "invalid_json" }, { status: 400 });
+  }
+
+  // ハニーポット: 人には見えない欄に入力があるのはボット。成功を装って何も処理しない。
+  if (data.website?.toString().trim()) {
+    return NextResponse.json({ ok: true });
+  }
+
+  if (isRateLimited(request)) {
+    return NextResponse.json({ ok: false, error: "too_many_requests" }, { status: 429 });
   }
 
   const missing = REQUIRED_FIELDS.filter((field) => !data[field]?.toString().trim());
@@ -267,11 +316,13 @@ export async function POST(request) {
     return NextResponse.json({ ok: false, error: "send_failed" }, { status: 500 });
   }
 
-  // 社内通知メール(最重要)が成功した場合のみ、自動返信メールとSlack通知を
-  // 並列実行する。どちらが失敗してもフォーム送信自体は成功扱いとする。
-  const [autoReplyResult, slackResult] = await Promise.allSettled([
+  // 社内通知メール(最重要)が成功した場合のみ、自動返信メール・Slack通知・Notion CRM登録を
+  // 並列実行する。どれが失敗してもフォーム送信自体は成功扱いとする。
+  const receivedAt = new Date();
+  const [autoReplyResult, slackResult, crmResult] = await Promise.allSettled([
     sendAutoReply(resend, data),
     sendSlackNotification(data),
+    registerInquiryToCrm(data, receivedAt),
   ]);
 
   if (autoReplyResult.status === "rejected") {
@@ -279,6 +330,13 @@ export async function POST(request) {
   }
   if (slackResult.status === "rejected") {
     console.error("[contact] slack notification failed", slackResult.reason);
+  }
+
+  if (crmResult.status === "rejected") {
+    // 個人情報(氏名・メール・電話)はログにも通知にも出さない。エラー内容と受信日時のみ。
+    const reason = crmResult.reason instanceof Error ? crmResult.reason.message : "unknown error";
+    console.error("[contact] notion crm registration failed", { receivedAt: receivedAt.toISOString(), reason });
+    await sendCrmFailureNotice(resend, receivedAt, reason);
   }
 
   return NextResponse.json({ ok: true });
