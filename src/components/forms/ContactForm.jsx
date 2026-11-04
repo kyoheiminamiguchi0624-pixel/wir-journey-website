@@ -17,6 +17,8 @@ const initialState = {
   businessType: BUSINESS_TYPES[0].value,
   inquiryType: INQUIRY_TYPES[0].value,
   message: "",
+  // ハニーポット(ボット対策)。人には見えない欄で、入力があれば送信側で破棄される。
+  website: "",
 };
 
 const REQUIRED_FIELDS = ["contactName", "companyName", "email"];
@@ -88,6 +90,10 @@ export function ContactForm() {
       </div>
 
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
+        <div className={styles.honeypot} aria-hidden="true">
+          <label htmlFor="website">ウェブサイト(入力しないでください)</label>
+          <input id="website" name="website" tabIndex={-1} autoComplete="off" value={values.website} onChange={handleChange} />
+        </div>
         <div className={styles.field}>
           <label htmlFor="contactName">
             お名前 <span className={styles.required}>*</span>
