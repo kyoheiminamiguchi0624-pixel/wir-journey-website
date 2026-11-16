@@ -32,3 +32,51 @@
 .formSection {
   scroll-margin-top: 76px;
 }
+
+/* 重要なお知らせ(Newsの記事へのリンク)。白地に細い罫線で、控えめに目立たせる */
+.notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35rem 0.9rem;
+  max-width: 640px;
+  margin: 2rem auto 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-accent);
+  background: var(--color-white);
+  color: var(--color-black);
+  text-decoration: none;
+  text-align: left;
+}
+
+.notice:hover .noticeMore {
+  text-decoration: underline;
+}
+
+.noticeLabel {
+  flex: none;
+  padding: 0.1rem 0.6rem;
+  border: 1px solid var(--color-accent);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+.noticeTitle {
+  font-family: var(--font-serif-jp);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.noticeMore {
+  flex: none;
+  font-size: 13px;
+  color: var(--color-accent);
+}
+
+/* 意味のまとまりの途中で改行しない */
+.noticePhrase {
+  display: inline-block;
+}
